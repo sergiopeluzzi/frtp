@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: frtp
+        psr4_prefix: frtp
+        src_path: app
