@@ -39,11 +39,11 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
-                    <li><a href="#services">Menu 1</a></li>
-                    <li><a href="#portfolio">Menu 2</a></li>
-                    <li><a href="#pricing">Menu 3</a></li>
-                    <li><a href="#about-us">Menu 4</a></li>
-                    <li><a href="#contact">Menu 5</a></li>
+                    <li><a href="#menu1">Menu 1</a></li>
+                    <li><a href="#menu2">Menu 2</a></li>
+                    <li><a href="#menu3">Menu 3</a></li>
+                    <li><a href="#menu4">Menu 4</a></li>
+                    <li><a href="#menu5">Menu 5</a></li>
                 </ul>
             </div>
         </div>
@@ -80,7 +80,7 @@
 </section>
 <!--/#main-slider-->
 
-<section id="services">
+<section id="menu1">
     <div class="container">
         <div class="box first">
             <div class="row">
@@ -151,9 +151,9 @@
     </div>
     <!--/.container-->
 </section>
-<!--/#services-->
+<!--/#menu1-->
 
-<section id="portfolio">
+<section id="menu2">
     <div class="container">
         <div class="box">
             <div class="center gap">
@@ -289,9 +289,9 @@
     </div>
     <!--/.container-->
 </section>
-<!--/#portfolio-->
+<!--/#menu2-->
 
-<section id="pricing">
+<section id="menu3">
     <div class="container">
         <div class="box">
             <div class="center">
@@ -346,9 +346,9 @@
         </div>
     </div>
 </section>
-<!--/#pricing-->
+<!--/#menu3-->
 
-<section id="about-us">
+<section id="menu4">
     <div class="container">
         <div class="box">
             <div class="center">
@@ -442,9 +442,9 @@
     </div>
     <!--/.container-->
 </section>
-<!--/#about-us-->
+<!--/#menu4-->
 
-<section id="contact">
+<section id="menu5">
     <div class="container">
         <div class="box last">
             <div class="row">
@@ -531,7 +531,7 @@
     </div>
     <!--/.container-->
 </section>
-<!--/#contact-->
+<!--/#menu5-->
 
 <footer id="footer">
     <div class="container">
