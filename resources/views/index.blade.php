@@ -1,256 +1,558 @@
-<!DOCTYPE HTML>
-<!--
-  Arcana by HTML5 UP
-  html5up.net | @n33co
-  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-  <head>
-    <title>F.R.T.P.</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="{{ asset('site/assets/css/main.css') }}" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-  </head>
-  <body>
-    <div id="page-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>FRTP | Federação Rondoniense de Tiro Prático</title>
+    <link href="{{asset('site/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('site/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('site/css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{asset('site/css/main.css')}}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{{asset('site/js/html5shiv.js')}}"></script>
+    <script src="{{asset('site/js/respond.min.js')}}"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="{{asset('site/images/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('site/images/ico/apple-touch-icon-144-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('site/images/ico/apple-touch-icon-114-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('site/images/ico/apple-touch-icon-72-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset('site/images/ico/apple-touch-icon-57-precomposed.png')}}">
+</head>
+<!--/head-->
 
-      <!-- Header -->
-        <div id="header">
-          <!-- Logo -->
-           <img src="{{ asset('site/images/logo_frtp.png') }}" >
-
-
-          <!-- Nav -->
-            <nav id="nav">
-              <ul>
-                <li class="current"><a href="{{ asset('site/index.html') }}">Home</a></li>
-                <li><a href="{{ asset('site/index.html') }}">Calendário</a></li>
-                <li><a href="{{ asset('site/index.html') }}">Ranking</a></li>
-                <li><a href="{{ asset('site/index.html') }}">Eventos</a></li>
-                <li><a href="{{ asset('site/index.html') }}">Contato</a></li>
-                <li><a href="{{ asset('site/index.html') }}">Entrar</a></li>
-                <!--
-                <li>
-                  <a href="#">Dropdown</a>
-                  <ul>
-                    <li><a href="#">Lorem dolor</a></li>
-                    <li><a href="#">Magna phasellus</a></li>
-                    <li><a href="#">Etiam sed tempus</a></li>
-                    <li>
-                      <a href="#">Submenu</a>
-                      <ul>
-                        <li><a href="#">Lorem dolor</a></li>
-                        <li><a href="#">Phasellus magna</a></li>
-                        <li><a href="#">Magna phasellus</a></li>
-                        <li><a href="#">Etiam nisl</a></li>
-                        <li><a href="#">Veroeros feugiat</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Veroeros feugiat</a></li>
-                  </ul>
-                </li>
-                <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                <li><a href="two-sidebar.html">Two Sidebar</a></li>
-                <li><a href="no-sidebar.html">No Sidebar</a></li>
-              -->
-              </ul>
-            </nav>
-
-        </div>
-
-      <!-- Banner -->
-        <section id="banner">
-          <header>
-            <!-- <h2>Arcana: <em>A responsive site template freebie by <a href="http://html5up.net">HTML5 UP</a></em></h2>
-            <a href="#" class="button">Learn More</a> -->
-          </header>
-        </section>
-
-      <!-- Highlights -->
-        <section class="wrapper style1">
-          <div class="container">
-            <div class="row 200%">
-              <section class="4u 12u(narrower)">
-                <div class="box highlight">
-                  <i class="icon major fa-paper-plane"></i>
-                  <h3>INFO 1</h3>
-                  <p>BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA</p>
-                </div>
-              </section>
-              <section class="4u 12u(narrower)">
-                <div class="box highlight">
-                  <i class="icon major fa-pencil"></i>
-                  <h3>INFO 2</h3>
-                  <p>BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA</p>
-                </div>
-              </section>
-              <section class="4u 12u(narrower)">
-                <div class="box highlight">
-                  <i class="icon major fa-wrench"></i>
-                  <h3>INFO 3</h3>
-                  <p>BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA</p>
-                </div>
-              </section>
+<body data-spy="scroll" data-target="#navbar" data-offset="0">
+<header id="header" role="banner">
+    <div class="container">
+        <div id="navbar" class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1 align="center" class="navbar-collapse">Empresa</h1>
+                <!--<a class="navbar-brand" href="/"></a>-->
             </div>
-          </div>
-        </section>
-
-      <!-- Gigantic Heading -->
-      <!--
-        <section class="wrapper style2">
-          <div class="container">
-            <header class="major">
-              <h2>A gigantic heading you can use for whatever</h2>
-              <p>With a much smaller subtitle hanging out just below it</p>
-            </header>
-          </div>
-        </section>
-      -->
-
-      <!-- Posts -->
-        <section class="wrapper style1">
-          <div class="container">
-            <div class="row">
-              <section class="6u 12u(narrower)">
-                <div class="box post">
-                  <a href="#" class="image left"><img src="{{ asset('site/images/pic01.jpg') }}" alt="" /></a>
-                  <div class="inner">
-                    <h3>The First Thing</h3>
-                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-                  </div>
-                </div>
-              </section>
-              <section class="6u 12u(narrower)">
-                <div class="box post">
-                  <a href="#" class="image left"><img src="{{ asset('site/images/pic02.jpg') }}" alt="" /></a>
-                  <div class="inner">
-                    <h3>The Second Thing</h3>
-                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-                  </div>
-                </div>
-              </section>
-            </div>
-            <div class="row">
-              <section class="6u 12u(narrower)">
-                <div class="box post">
-                  <a href="#" class="image left"><img src="{{ asset('site/images/pic03.jpg') }}" alt="" /></a>
-                  <div class="inner">
-                    <h3>The Third Thing</h3>
-                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-                  </div>
-                </div>
-              </section>
-              <section class="6u 12u(narrower)">
-                <div class="box post">
-                  <a href="#" class="image left"><img src="{{ asset('site/images/pic04.jpg') }}" alt="" /></a>
-                  <div class="inner">
-                    <h3>The Fourth Thing</h3>
-                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
-        </section>
-
-      <!-- CTA -->
-        <section id="cta" class="wrapper style3">
-          <div class="container">
-            <header>
-              <h2>BLA BLA BLA BLA BLA BLA BLA BLA</h2>
-              <a href="#" class="button">BLA BLA BLA</a>
-            </header>
-          </div>
-        </section>
-
-      <!-- Footer -->
-        <div id="footer">
-          <div class="container">
-            <div class="row">
-          <!--
-              <section class="3u 6u(narrower) 12u$(mobilep)">
-                <h3>Links to Stuff</h3>
-                <ul class="links">
-                  <li><a href="#">Mattis et quis rutrum</a></li>
-                  <li><a href="#">Suspendisse amet varius</a></li>
-                  <li><a href="#">Sed et dapibus quis</a></li>
-                  <li><a href="#">Rutrum accumsan dolor</a></li>
-                  <li><a href="#">Mattis rutrum accumsan</a></li>
-                  <li><a href="#">Suspendisse varius nibh</a></li>
-                  <li><a href="#">Sed et dapibus mattis</a></li>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
+                    <li><a href="#services">Menu 1</a></li>
+                    <li><a href="#portfolio">Menu 2</a></li>
+                    <li><a href="#pricing">Menu 3</a></li>
+                    <li><a href="#about-us">Menu 4</a></li>
+                    <li><a href="#contact">Menu 5</a></li>
                 </ul>
-              </section>
-              <section class="3u 6u$(narrower) 12u$(mobilep)">
-                <h3>More Links to Stuff</h3>
-                <ul class="links">
-                  <li><a href="#">Duis neque nisi dapibus</a></li>
-                  <li><a href="#">Sed et dapibus quis</a></li>
-                  <li><a href="#">Rutrum accumsan sed</a></li>
-                  <li><a href="#">Mattis et sed accumsan</a></li>
-                  <li><a href="#">Duis neque nisi sed</a></li>
-                  <li><a href="#">Sed et dapibus quis</a></li>
-                  <li><a href="#">Rutrum amet varius</a></li>
-                </ul>
-              </section> -->
-              <section class="6u 12u(narrower)">
-                <h3>Get In Touch</h3>
-                <form>
-                  <div class="row 50%">
-                    <div class="6u 12u(mobilep)">
-                      <input type="text" name="name" id="name" placeholder="Name" />
-                    </div>
-                    <div class="6u 12u(mobilep)">
-                      <input type="email" name="email" id="email" placeholder="Email" />
-                    </div>
-                  </div>
-                  <div class="row 50%">
-                    <div class="12u">
-                      <textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
-                    </div>
-                  </div>
-                  <div class="row 50%">
-                    <div class="12u">
-                      <ul class="actions">
-                        <li><input type="submit" class="button alt" value="Send Message" /></li>
-                      </ul>
-                    </div>
-                  </div>
-                </form>
-              </section>
             </div>
-          </div>
-
-          <!-- Icons -->
-            <ul class="icons">
-              <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-              <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-              <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-              <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-              <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-            </ul>
-
-          <!-- Copyright -->
-            <div class="copyright">
-              <ul class="menu">
-                <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-              </ul>
-            </div>
-
         </div>
-
     </div>
+</header>
+<!--/#header-->
 
-    <!-- Scripts -->
-      <script src="{{ asset('site/assets/js/jquery.min.js') }}"></script>
-      <script src="{{ asset('site/assets/js/jquery.dropotron.min.js') }}"></script>
-      <script src="{{ asset('site/assets/js/skel.min.js') }}"></script>
-      <script src="{{ asset('site/assets/js/util.js') }}"></script>
-      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-      <script src="{{ asset('site/assets/js/main.js') }}"></script>
+<section id="main-slider" class="carousel">
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-content">
+                    <h1>Título h1</h1>
 
-  </body>
+                    <p class="lead">Parágrafo 'lead'<br>Segunda linha paragrafo</p>
+                </div>
+            </div>
+        </div>
+        <!--/.item-->
+        <div class="item">
+            <div class="container">
+                <div class="carousel-content">
+                    <h1>2º Título h1</h1>
+
+                    <p class="lead">Outro parágrafo 'lead'<br>Outra segunda linha paragrafo</p>
+                </div>
+            </div>
+        </div>
+        <!--/.item-->
+    </div>
+    <!--/.carousel-inner-->
+    <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
+    <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
+</section>
+<!--/#main-slider-->
+
+<section id="services">
+    <div class="container">
+        <div class="box first">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="center">
+                        <i class="icon-apple icon-md icon-color1"></i>
+                        <h4>Primeiro box h4</h4>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            Vestibulum tortor quam, feugiat vitae.</p>
+                    </div>
+                </div>
+                <!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="center">
+                        <i class="icon-android icon-md icon-color2"></i>
+                        <h4>Segundo box h4</h4>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            Vestibulum tortor quam, feugiat vitae.</p>
+                    </div>
+                </div>
+                <!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="center">
+                        <i class="icon-windows icon-md icon-color3"></i>
+                        <h4>Terceiro box h4</h4>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            Vestibulum tortor quam, feugiat vitae.</p>
+                    </div>
+                </div>
+                <!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="center">
+                        <i class="icon-html5 icon-md icon-color4"></i>
+                        <h4>Quarto box h4</h4>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            Vestibulum tortor quam, feugiat vitae.</p>
+                    </div>
+                </div>
+                <!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="center">
+                        <i class="icon-css3 icon-md icon-color5"></i>
+                        <h4>Quinto box h4</h4>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            Vestibulum tortor quam, feugiat vitae.</p>
+                    </div>
+                </div>
+                <!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="center">
+                        <i class="icon-thumbs-up icon-md icon-color6"></i>
+                        <h4>Sexto box h4</h4>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            Vestibulum tortor quam, feugiat vitae.</p>
+                    </div>
+                </div>
+                <!--/.col-md-4-->
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.box-->
+    </div>
+    <!--/.container-->
+</section>
+<!--/#services-->
+
+<section id="portfolio">
+    <div class="container">
+        <div class="box">
+            <div class="center gap">
+                <h2>Menu 2</h2>
+
+                <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac<br>turpis
+                    egestas. Vestibulum tortor quam, feugiat vitae.</p>
+            </div>
+            <!--/.center-->
+            <ul class="portfolio-filter">
+                <li><a class="btn btn-primary active" href="#" data-filter="*">All</a></li>
+                <li><a class="btn btn-primary" href="#" data-filter=".bootstrap">Bootstrap</a></li>
+                <li><a class="btn btn-primary" href="#" data-filter=".html">HTML</a></li>
+                <li><a class="btn btn-primary" href="#" data-filter=".wordpress">Wordpress</a></li>
+            </ul>
+            <!--/#portfolio-filter-->
+            <ul class="portfolio-items col-4">
+                <li class="portfolio-item apps">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="{{asset('site/images/portfolio/thumb/item1.jpg')}}" alt="">
+
+                            <div class="overlay">
+                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
+                                   href="{{asset('site/images/portfolio/full/item1.jpg')}}"><i class="icon-eye-open"></i></a>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </li>
+                <!--/.portfolio-item-->
+                <li class="portfolio-item joomla bootstrap">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="{{asset('site/images/portfolio/thumb/item2.jpg')}}" alt="">
+
+                            <div class="overlay">
+                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
+                                   href="{{asset('site/images/portfolio/full/item2.jpg')}}"><i class="icon-eye-open"></i></a>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </li>
+                <!--/.portfolio-item-->
+                <li class="portfolio-item bootstrap wordpress">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="{{asset('site/images/portfolio/thumb/item3.jpg')}}" alt="">
+
+                            <div class="overlay">
+                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
+                                   href="{{asset('site/images/portfolio/full/item3.jpg')}}"><i class="icon-eye-open"></i></a>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </li>
+                <!--/.portfolio-item-->
+                <li class="portfolio-item joomla wordpress apps">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="{{asset('site/images/portfolio/thumb/item4.jpg')}}" alt="">
+
+                            <div class="overlay">
+                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
+                                   href="{{asset('site/images/portfolio/full/item4.jpg')}}"><i class="icon-eye-open"></i></a>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </li>
+                <!--/.portfolio-item-->
+                <li class="portfolio-item joomla html">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="{{asset('site/images/portfolio/thumb/item5.jpg')}}" alt="">
+
+                            <div class="overlay">
+                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
+                                   href="{{asset('site/images/portfolio/full/item5.jpg')}}"><i class="icon-eye-open"></i></a>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </li>
+                <!--/.portfolio-item-->
+                <li class="portfolio-item wordpress html">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="{{asset('site/images/portfolio/thumb/item6.jpg')}}" alt="">
+
+                            <div class="overlay">
+                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
+                                   href="{{asset('site/images/portfolio/full/item6.jpg')}}"><i class="icon-eye-open"></i></a>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </li>
+                <!--/.portfolio-item-->
+                <li class="portfolio-item joomla html">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="{{asset('site/images/portfolio/thumb/item5.jpg')}}" alt="">
+
+                            <div class="overlay">
+                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
+                                   href="{{asset('site/images/portfolio/full/item5.jpg')}}"><i class="icon-eye-open"></i></a>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </li>
+                <!--/.portfolio-item-->
+                <li class="portfolio-item wordpress html">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="{{asset('site/images/portfolio/thumb/item6.jpg')}}" alt="">
+
+                            <div class="overlay">
+                                <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
+                                   href="{{asset('site/images/portfolio/full/item6.jpg')}}"><i class="icon-eye-open"></i></a>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </li>
+                <!--/.portfolio-item-->
+            </ul>
+        </div>
+        <!--/.box-->
+    </div>
+    <!--/.container-->
+</section>
+<!--/#portfolio-->
+
+<section id="pricing">
+    <div class="container">
+        <div class="box">
+            <div class="center">
+                <h2>Menu 3</h2>
+
+                <p class="lead">Pellentesque habitant morbi tristique senectus et netus et <br>malesuada fames ac turpis
+                    egestas.</p>
+            </div>
+            <!--/.center-->
+            <div class="big-gap"></div>
+            <div id="pricing-table" class="row">
+                <div class="col-sm-4">
+                    <ul class="plan">
+                        <li class="plan-name">Basico</li>
+                        <li class="plan-price">R$29,00</li>
+                        <li>5GB Storage</li>
+                        <li>1GB RAM</li>
+                        <li>400GB Bandwidth</li>
+                        <li>10 Email Address</li>
+                        <li>Forum Support</li>
+                        <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
+                    </ul>
+                </div>
+                <!--/.col-sm-4-->
+                <div class="col-sm-4">
+                    <ul class="plan featured">
+                        <li class="plan-name">Ideal</li>
+                        <li class="plan-price">R$49,00</li>
+                        <li>10GB Storage</li>
+                        <li>2GB RAM</li>
+                        <li>1TB Bandwidth</li>
+                        <li>100 Email Address</li>
+                        <li>Forum Support</li>
+                        <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
+                    </ul>
+                </div>
+                <!--/.col-sm-4-->
+                <div class="col-sm-4">
+                    <ul class="plan">
+                        <li class="plan-name">Avançado</li>
+                        <li class="plan-price">R$199,00</li>
+                        <li>30GB Storage</li>
+                        <li>5GB RAM</li>
+                        <li>5TB Bandwidth</li>
+                        <li>1000 Email Address</li>
+                        <li>Forum Support</li>
+                        <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
+                    </ul>
+                </div>
+                <!--/.col-sm-4-->
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#pricing-->
+
+<section id="about-us">
+    <div class="container">
+        <div class="box">
+            <div class="center">
+                <h2>Menu 4</h2>
+
+                <p class="lead">Pellentesque habitant morbi tristique senectus et netus et<br>malesuada fames ac turpis
+                    egestas.</p>
+            </div>
+            <div class="gap"></div>
+            <div id="team-scroller" class="carousel scale">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="member">
+                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team1.jpg')}}"
+                                            alt=""></p>
+
+                                    <h3>Agnes Smith
+                                        <small class="designation">CEO &amp; Founder</small>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="member">
+                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team2.jpg')}}"
+                                            alt=""></p>
+
+                                    <h3>Donald Ford
+                                        <small class="designation">Senior Vice President</small>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="member">
+                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team3.jpg')}}"
+                                            alt=""></p>
+
+                                    <h3>Karen Richardson
+                                        <small class="designation">Assitant Vice President</small>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="member">
+                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team3.jpg')}}"
+                                            alt=""></p>
+
+                                    <h3>David Robbins
+                                        <small class="designation">Co-Founder</small>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="member">
+                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team1.jpg')}}"
+                                            alt=""></p>
+
+                                    <h3>Philip Mejia
+                                        <small class="designation">Marketing Manager</small>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="member">
+                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team2.jpg')}}"
+                                            alt=""></p>
+
+                                    <h3>Charles Erickson
+                                        <small class="designation">Support Manager</small>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left-arrow" href="#team-scroller" data-slide="prev">
+                    <i class="icon-angle-left icon-4x"></i>
+                </a>
+                <a class="right-arrow" href="#team-scroller" data-slide="next">
+                    <i class="icon-angle-right icon-4x"></i>
+                </a>
+            </div>
+            <!--/.carousel-->
+        </div>
+        <!--/.box-->
+    </div>
+    <!--/.container-->
+</section>
+<!--/#about-us-->
+
+<section id="contact">
+    <div class="container">
+        <div class="box last">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Menu 5</h1>
+
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <form id="main-contact-form" class="contact-form" name="contact-form" method="post"
+                          action="sendemail.php" role="form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required"
+                                           placeholder="Email address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <textarea name="message" id="message" required="required" class="form-control"
+                                              rows="8" placeholder="Message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-danger btn-lg">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--/.col-sm-6-->
+                <div class="col-sm-6">
+                    <h1>Our Address</h1>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <address>
+                                <strong>Shift inc.</strong><br>
+                                Avenida Porto Velho, 1780<br>
+                                CENTRO - Cacoal - RO<br>
+                                <abbr title="Phone">P:</abbr> (69) 8479-9584
+                            </address>
+                        </div>
+                        <div class="col-md-6">
+                            <address>
+                                <strong>Shift inc.</strong><br>
+                                Avenida Porto Velho, 1780 <br>
+                                CENTRO - Cacoal - RO<br>
+                                <abbr title="Phone">P:</abbr> (69) 8479-9584
+                            </address>
+                        </div>
+                    </div>
+                    <h1>Connect with us</h1>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="social">
+                                <li><a href="#"><i class="icon-facebook icon-social"></i> Facebook</a></li>
+                                <li><a href="#"><i class="icon-google-plus icon-social"></i> Google Plus</a></li>
+                                <li><a href="#"><i class="icon-pinterest icon-social"></i> Pinterest</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="social">
+                                <li><a href="#"><i class="icon-linkedin icon-social"></i> Linkedin</a></li>
+                                <li><a href="#"><i class="icon-twitter icon-social"></i> Twitter</a></li>
+                                <li><a href="#"><i class="icon-youtube icon-social"></i> Youtube</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--/.col-sm-6-->
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.box-->
+    </div>
+    <!--/.container-->
+</section>
+<!--/#contact-->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/"
+                               title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>.
+                All Rights Reserved.
+            </div>
+            <div class="col-sm-6">
+                <img class="pull-right" src="{{asset('site/images/shapebootstrap.png')}}" alt="ShapeBootstrap" title="ShapeBootstrap">
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/#footer-->
+
+<script src="{{asset('site/js/jquery.js')}}"></script>
+<script src="{{asset('site/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('site/js/jquery.isotope.min.js')}}"></script>
+<script src="{{asset('site/js/jquery.prettyPhoto.js')}}"></script>
+<script src="{{asset('site/js/main.js')}}"></script>
+</body>
 </html>
