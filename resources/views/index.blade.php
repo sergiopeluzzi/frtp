@@ -15,9 +15,12 @@
     <script src="{{asset('site/js/respond.min.js')}}"></script>
     <![endif]-->
     <link rel="shortcut icon" href="{{asset('site/images/ico/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('site/images/ico/apple-touch-icon-144-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('site/images/ico/apple-touch-icon-114-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('site/images/ico/apple-touch-icon-72-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="{{asset('site/images/ico/apple-touch-icon-144-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="{{asset('site/images/ico/apple-touch-icon-114-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+          href="{{asset('site/images/ico/apple-touch-icon-72-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{asset('site/images/ico/apple-touch-icon-57-precomposed.png')}}">
 </head>
 <!--/head-->
@@ -83,6 +86,10 @@
 <section id="menu1">
     <div class="container">
         <div class="box first">
+            <div class="center gap">
+                <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac<br>turpis
+                    egestas. Vestibulum tortor quam, feugiat vitae.</p>
+            </div>
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <div class="center">
@@ -178,7 +185,8 @@
 
                             <div class="overlay">
                                 <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
-                                   href="{{asset('site/images/portfolio/full/item1.jpg')}}"><i class="icon-eye-open"></i></a>
+                                   href="{{asset('site/images/portfolio/full/item1.jpg')}}"><i
+                                            class="icon-eye-open"></i></a>
                             </div>
                         </div>
                         <h5>Lorem ipsum dolor sit amet</h5>
@@ -192,7 +200,8 @@
 
                             <div class="overlay">
                                 <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
-                                   href="{{asset('site/images/portfolio/full/item2.jpg')}}"><i class="icon-eye-open"></i></a>
+                                   href="{{asset('site/images/portfolio/full/item2.jpg')}}"><i
+                                            class="icon-eye-open"></i></a>
                             </div>
                         </div>
                         <h5>Lorem ipsum dolor sit amet</h5>
@@ -206,7 +215,8 @@
 
                             <div class="overlay">
                                 <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
-                                   href="{{asset('site/images/portfolio/full/item3.jpg')}}"><i class="icon-eye-open"></i></a>
+                                   href="{{asset('site/images/portfolio/full/item3.jpg')}}"><i
+                                            class="icon-eye-open"></i></a>
                             </div>
                         </div>
                         <h5>Lorem ipsum dolor sit amet</h5>
@@ -220,7 +230,8 @@
 
                             <div class="overlay">
                                 <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
-                                   href="{{asset('site/images/portfolio/full/item4.jpg')}}"><i class="icon-eye-open"></i></a>
+                                   href="{{asset('site/images/portfolio/full/item4.jpg')}}"><i
+                                            class="icon-eye-open"></i></a>
                             </div>
                         </div>
                         <h5>Lorem ipsum dolor sit amet</h5>
@@ -234,7 +245,8 @@
 
                             <div class="overlay">
                                 <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
-                                   href="{{asset('site/images/portfolio/full/item5.jpg')}}"><i class="icon-eye-open"></i></a>
+                                   href="{{asset('site/images/portfolio/full/item5.jpg')}}"><i
+                                            class="icon-eye-open"></i></a>
                             </div>
                         </div>
                         <h5>Lorem ipsum dolor sit amet</h5>
@@ -248,7 +260,8 @@
 
                             <div class="overlay">
                                 <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
-                                   href="{{asset('site/images/portfolio/full/item6.jpg')}}"><i class="icon-eye-open"></i></a>
+                                   href="{{asset('site/images/portfolio/full/item6.jpg')}}"><i
+                                            class="icon-eye-open"></i></a>
                             </div>
                         </div>
                         <h5>Lorem ipsum dolor sit amet</h5>
@@ -262,7 +275,8 @@
 
                             <div class="overlay">
                                 <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
-                                   href="{{asset('site/images/portfolio/full/item5.jpg')}}"><i class="icon-eye-open"></i></a>
+                                   href="{{asset('site/images/portfolio/full/item5.jpg')}}"><i
+                                            class="icon-eye-open"></i></a>
                             </div>
                         </div>
                         <h5>Lorem ipsum dolor sit amet</h5>
@@ -276,7 +290,8 @@
 
                             <div class="overlay">
                                 <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet"
-                                   href="{{asset('site/images/portfolio/full/item6.jpg')}}"><i class="icon-eye-open"></i></a>
+                                   href="{{asset('site/images/portfolio/full/item6.jpg')}}"><i
+                                            class="icon-eye-open"></i></a>
                             </div>
                         </div>
                         <h5>Lorem ipsum dolor sit amet</h5>
@@ -292,56 +307,59 @@
 <!--/#menu2-->
 
 <section id="menu3">
-    <div class="container">
-        <div class="box">
-            <div class="center">
-                <h2>Menu 3</h2>
+    <div id="pricing">
+        <div class="container">
+            <div class="box">
+                <div class="center">
+                    <h2>Menu 3</h2>
 
-                <p class="lead">Pellentesque habitant morbi tristique senectus et netus et <br>malesuada fames ac turpis
-                    egestas.</p>
-            </div>
-            <!--/.center-->
-            <div class="big-gap"></div>
-            <div id="pricing-table" class="row">
-                <div class="col-sm-4">
-                    <ul class="plan">
-                        <li class="plan-name">Basico</li>
-                        <li class="plan-price">R$29,00</li>
-                        <li>5GB Storage</li>
-                        <li>1GB RAM</li>
-                        <li>400GB Bandwidth</li>
-                        <li>10 Email Address</li>
-                        <li>Forum Support</li>
-                        <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
-                    </ul>
+                    <p class="lead">Pellentesque habitant morbi tristique senectus et netus et <br>malesuada fames ac
+                        turpis
+                        egestas.</p>
                 </div>
-                <!--/.col-sm-4-->
-                <div class="col-sm-4">
-                    <ul class="plan featured">
-                        <li class="plan-name">Ideal</li>
-                        <li class="plan-price">R$49,00</li>
-                        <li>10GB Storage</li>
-                        <li>2GB RAM</li>
-                        <li>1TB Bandwidth</li>
-                        <li>100 Email Address</li>
-                        <li>Forum Support</li>
-                        <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
-                    </ul>
+                <!--/.center-->
+                <div class="big-gap"></div>
+                <div id="pricing-table" class="row">
+                    <div class="col-sm-4">
+                        <ul class="plan">
+                            <li class="plan-name">Basico</li>
+                            <li class="plan-price">R$ 29,00</li>
+                            <li>5GB Storage</li>
+                            <li>1GB RAM</li>
+                            <li>400GB Bandwidth</li>
+                            <li>10 Email Address</li>
+                            <li>Forum Support</li>
+                            <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
+                        </ul>
+                    </div>
+                    <!--/.col-sm-4-->
+                    <div class="col-sm-4">
+                        <ul class="plan featured">
+                            <li class="plan-name">Ideal</li>
+                            <li class="plan-price">R$ 49,00</li>
+                            <li>10GB Storage</li>
+                            <li>2GB RAM</li>
+                            <li>1TB Bandwidth</li>
+                            <li>100 Email Address</li>
+                            <li>Forum Support</li>
+                            <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
+                        </ul>
+                    </div>
+                    <!--/.col-sm-4-->
+                    <div class="col-sm-4">
+                        <ul class="plan">
+                            <li class="plan-name">Avançado</li>
+                            <li class="plan-price">R$ 199,00</li>
+                            <li>30GB Storage</li>
+                            <li>5GB RAM</li>
+                            <li>5TB Bandwidth</li>
+                            <li>1000 Email Address</li>
+                            <li>Forum Support</li>
+                            <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
+                        </ul>
+                    </div>
+                    <!--/.col-sm-4-->
                 </div>
-                <!--/.col-sm-4-->
-                <div class="col-sm-4">
-                    <ul class="plan">
-                        <li class="plan-name">Avançado</li>
-                        <li class="plan-price">R$199,00</li>
-                        <li>30GB Storage</li>
-                        <li>5GB RAM</li>
-                        <li>5TB Bandwidth</li>
-                        <li>1000 Email Address</li>
-                        <li>Forum Support</li>
-                        <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
-                    </ul>
-                </div>
-                <!--/.col-sm-4-->
             </div>
         </div>
     </div>
@@ -364,7 +382,8 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team1.jpg')}}"
+                                    <p><img class="img-responsive img-thumbnail img-circle"
+                                            src="{{asset('site/images/team1.jpg')}}"
                                             alt=""></p>
 
                                     <h3>Agnes Smith
@@ -374,7 +393,8 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team2.jpg')}}"
+                                    <p><img class="img-responsive img-thumbnail img-circle"
+                                            src="{{asset('site/images/team2.jpg')}}"
                                             alt=""></p>
 
                                     <h3>Donald Ford
@@ -384,7 +404,8 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team3.jpg')}}"
+                                    <p><img class="img-responsive img-thumbnail img-circle"
+                                            src="{{asset('site/images/team3.jpg')}}"
                                             alt=""></p>
 
                                     <h3>Karen Richardson
@@ -398,7 +419,8 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team3.jpg')}}"
+                                    <p><img class="img-responsive img-thumbnail img-circle"
+                                            src="{{asset('site/images/team3.jpg')}}"
                                             alt=""></p>
 
                                     <h3>David Robbins
@@ -408,7 +430,8 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team1.jpg')}}"
+                                    <p><img class="img-responsive img-thumbnail img-circle"
+                                            src="{{asset('site/images/team1.jpg')}}"
                                             alt=""></p>
 
                                     <h3>Philip Mejia
@@ -418,7 +441,8 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="member">
-                                    <p><img class="img-responsive img-thumbnail img-circle" src="{{asset('site/images/team2.jpg')}}"
+                                    <p><img class="img-responsive img-thumbnail img-circle"
+                                            src="{{asset('site/images/team2.jpg')}}"
                                             alt=""></p>
 
                                     <h3>Charles Erickson
@@ -535,14 +559,54 @@
 
 <footer id="footer">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/"
-                               title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>.
-                All Rights Reserved.
+        <div class="row" align="center">
+            <div class="col-sm-3">
+                <p>Rodapé primeira coluna</p>
+
+                <p>Rodapé primeira coluna</p>
+
+                <p>Rodapé primeira coluna</p>
+
+                <p>Rodapé primeira coluna</p>
+
+                <p>Rodapé primeira coluna</p>
+
+                <p>Rodapé primeira coluna</p>
             </div>
-            <div class="col-sm-6">
-                <img class="pull-right" src="{{asset('site/images/shapebootstrap.png')}}" alt="ShapeBootstrap" title="ShapeBootstrap">
+            <div class="col-sm-3">
+                <p>Rodapé segunda coluna</p>
+
+                <p>Rodapé segunda coluna</p>
+
+                <p>Rodapé segunda coluna</p>
+
+                <p>Rodapé segunda coluna</p>
+
+                <p>Rodapé segunda coluna</p>
+
+                <p>Rodapé segunda coluna</p>
+            </div>
+            <div class="col-sm-3">
+                <p>Rodapé terceira coluna</p>
+
+                <p>Rodapé terceira coluna</p>
+
+                <p>Rodapé terceira coluna</p>
+
+                <p>Rodapé terceira coluna</p>
+
+                <p>Rodapé terceira coluna</p>
+            </div>
+            <div class="col-sm-3">
+                <p>Rodapé quarta coluna</p>
+
+                <p>Rodapé quarta coluna</p>
+
+                <p>Rodapé quarta coluna</p>
+
+                <p>Rodapé quarta coluna</p>
+
+                <p>Rodapé quarta coluna</p>
             </div>
         </div>
     </div>
