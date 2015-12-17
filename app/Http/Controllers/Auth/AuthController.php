@@ -2,7 +2,7 @@
 
 namespace frtp\Http\Controllers\Auth;
 
-use frtp\User;
+use frtp\Models\User;
 use Validator;
 use frtp\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
