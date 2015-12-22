@@ -1,5 +1,6 @@
 <?php
 
+use frtp\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,6 +12,12 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as' => 'index', function() {
     return view('index');
-});
+}]);
+
+
+
+Route::get('/associados', ['as' => 'associados.index', 'uses' => 'AssociadosController@index']);
+Route::get('/associados/cadastro', ['as' => 'associados.create', 'uses' => 'AssociadosController@create']);
+Route::get('/associados/salvar', ['as' => 'associados.store', 'uses' => 'AssociadosController@store']);
