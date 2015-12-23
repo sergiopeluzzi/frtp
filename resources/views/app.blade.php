@@ -30,11 +30,10 @@
     <div class="container">
         <div class="navbar">
             <ul class="nav navbar-nav pull-right">
-                <li><a class="btn btn-lg" href="#"><i class="glyphicon glyphicon-lock"></i> Acesso Restrito</a></li>
-                <li><a class="btn btn-lg" href="#"><i class="glyphicon glyphicon-hand-down"></i> Filie-se</a></li>
+                <li><a class="btn btn-lg text-success" href="#"><i class="glyphicon glyphicon-lock"></i> Acesso Restrito</a></li>
+                <li><a class="btn btn-lg text-success" href="{{ route('associados.create') }}"><i class="glyphicon glyphicon-hand-down"></i> Filie-se</a></li>
             </ul>
         </div>
-
         <div id="navbar" class="navbar navbar-default">
             <div class="navbar-header navbar-collapse">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

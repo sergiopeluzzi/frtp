@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 body {
-  background: #e5e5e5;
+  background: #d0d0d0;
   color: #999;
 }
 h1,
@@ -48,7 +48,7 @@ a:focus {
   z-index: 99999;
 }
 #main-slider {
-  background-image: url(../images/slider-bg.jpg);
+  background-image: url(../images/liga.png);
   background-attachment: fixed;
   background-size: cover;
   background-position: 50% 50%;
@@ -551,6 +551,11 @@ a:focus {
 }
 .big-gap {
   margin-bottom: 100px;
+}
+.tit-box {
+  background-color: #ffff00;
+  padding: 4px;
+  font-family: Calibri;
 }
 #footer {
   padding-top: 30px;
