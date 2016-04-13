@@ -15,6 +15,8 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+
+
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -144,6 +146,10 @@ return [
         Firebird\FirebirdServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+        // ...
+        Grimthorr\LaravelToast\ServiceProvider::class,
+
+
         /*
          * Application Service Providers...
          */
@@ -202,7 +208,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
-
+        'Toast'     => Grimthorr\LaravelToast\Facade::class,
     ],
 
 ];

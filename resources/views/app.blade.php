@@ -30,8 +30,8 @@
     <div class="container">
         <div class="navbar">
             <ul class="nav navbar-nav pull-right">
-                <li><a class="btn btn-lg text-success" href="#"><i class="glyphicon glyphicon-lock"></i> Acesso Restrito</a></li>
-                <li><a class="btn btn-lg text-success" href="{{ route('associados.create') }}"><i class="glyphicon glyphicon-hand-down"></i> Filie-se</a></li>
+                <li><a class="btn btn-lg text-success" href="{{ route('login.index') }}"><i class="glyphicon glyphicon-lock"></i> Acesso Restrito</a></li>
+                <!--<li><a class="btn btn-lg text-success" href="{{ route('interno.associados.create') }}"><i class="glyphicon glyphicon-hand-down"></i> Filie-se</a></li>-->
             </ul>
         </div>
         <div id="navbar" class="navbar navbar-default">
@@ -142,5 +142,71 @@
 <script src="{{asset('site/js/jquery.isotope.min.js')}}"></script>
 <script src="{{asset('site/js/jquery.prettyPhoto.js')}}"></script>
 <script src="{{asset('site/js/main.js')}}"></script>
+
+
+
+<script src="{{asset('interno/dist/js/maskValid/jquery-1.5.2.min.js')}}" type="text/javascript"></script>
+<!-- Plugin Validation -->
+<script src="{{asset('interno/dist/js/maskValid/jquery.validate.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('interno/dist/js/maskValid/additional-methods.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('interno/dist/js/maskValid/messages_ptbr.js')}}" type="text/javascript"></script>
+<!-- Plugin Masked Input -->
+<script src="{{asset('interno/dist/js/maskValid/jquery.maskedinput-1.3.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('interno/dist/js/maskValid/jquery.price_format.1.4.js')}}" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="{{asset('interno/dist/css/estilo.css')}}" />
+
+
+<!-- Script que vai adicionar as máscaras nos campos -->
+<script type="text/javascript">
+    jQuery(function($){
+        //defina as máscaras de seus campos, o 9 indica um caracter numérico qualquer
+        $("#IDUSER").mask("999.999.999-99");
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready( function() {
+        //Inicio das regras de validação
+        $("#login").validate({
+            // Define as regras
+            rules:{
+                NOME:{
+                    required: true
+                },
+                IDUSER:{
+                    required: true
+                },
+                NOM_USER:{
+                    required: true
+                },
+                SENHA:{
+                    required: true
+                },
+                SENHA2:{
+                    required: true
+                }
+            },
+        });
+    });
+
+</script>
+
+    <script>
+        var password = document.getElementById("SENHA"), confirm_password = document.getElementById("SENHA2");
+        function validatePassword(){
+            if(password.value != confirm_password.value)
+            {
+
+                confirm_password.setCustomValidity("As Senhas devem ser Iguais!");
+            }
+            else
+            {
+                confirm_password.setCustomValidity('');
+            }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+
 </body>
 </html>

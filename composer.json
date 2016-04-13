@@ -9,7 +9,9 @@
         "laravel/framework": "5.1.*",
         "prettus/l5-repository": "^2.1",
         "jacquestvanzuydam/laravel-firebird": "dev-5.1-support",
-        "laravelcollective/html": "5.1.*"
+        "laravelcollective/html": "5.1.*",
+        "kriansa/openboleto": "^1.0",
+        "grimthorr/laravel-toast": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -22,7 +24,8 @@
             "database"
         ],
         "psr-4": {
-            "frtp\\": "app/"
+            "frtp\\": "app/",
+            "openBoleto\\": "openBoleto/"
         }
     },
     "autoload-dev": {
