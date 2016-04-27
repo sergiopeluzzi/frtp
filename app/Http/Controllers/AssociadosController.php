@@ -2,6 +2,8 @@
 
 namespace frtp\Http\Controllers;
 
+use Grimthorr\LaravelToast\Facade as Toast;
+use Illuminate\Support\Facades\Redirect;
 use frtp\Models\Associado;
 use frtp\Models\Cidade;
 use Illuminate\Http\Request;

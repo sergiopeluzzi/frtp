@@ -3,7 +3,10 @@
 namespace frtp\Http\Controllers;
 
 
+use frtp\Models\Inscricao;
+use frtp\Models\Modalidades;
 use Grimthorr\LaravelToast\Facade as Toast;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use DateTime;
 use frtp\Models\Receber;
@@ -40,9 +43,49 @@ class EventosController extends Controller
 
         $eventosDB = new Eventos();
 
+        $modalidadesDB = new Modalidades();
+
+        $inscricao = new Inscricao();
+
         $associado['associado'] = $associadodb->where('CPF', session('IDUSER'))->first();
 
-        $associado['eventosDisponiveis'] = $eventosDB->orderBy('CODCC','DESC')->get()->toArray();
+        $codAssociado = $associadodb->where('CPF', session('IDUSER'))->get()->toArray();
+
+        $dataAtual = Carbon::now()->format('Y-m-d');
+
+        if ( $eventosDB->where('DAT_INI','<=', $dataAtual)->where('DAT_FIM','>=', $dataAtual)->get()->toArray() )
+        {
+            $anoAtual = Carbon::now()->format('Y');
+
+            $associado['eventosDisponiveis'] = $eventosDB->where('DAT_INI','<=', $dataAtual)->where('DAT_FIM','>=', $dataAtual)->get()->toArray();
+
+            $associado['modalidades'] = $modalidadesDB->where('ANOBASE','=', $anoAtual)->get()->toArray();
+
+        }
+
+        for($i=0; $i<count($associado['modalidades']); $i++)
+        {
+            for($j=0; $j<count($associado['eventosDisponiveis']); $j++)
+            {
+                $associado['modalidades'][$i]['IDEVENTO'] = $associado['eventosDisponiveis'][$j]['IDEVENTO'];
+
+                $modalidadeEvento[] = $associado['modalidades'][$i];
+            }
+        }
+
+        for($k=0; $k<count($modalidadeEvento); $k++)
+        {
+            if($inscricao->where('CODMAT','=', $codAssociado[0]['CODASS'])->where('CODMOD','=', $modalidadeEvento[$k]['CODMOD'])->where('IDEVENTO','=', $modalidadeEvento[$k]['IDEVENTO'])->get()->toArray() )
+            {
+                $modalidadeEvento[$k]['JAFEZ'] = 'S';
+            }
+            else
+            {
+                $modalidadeEvento[$k]['JAFEZ'] = 'N';
+            }
+        }
+
+        $associado['modalidades'] = $modalidadeEvento;
 
         return view('interno.eventos.index')->with($associado);
 /*
@@ -114,112 +157,195 @@ class EventosController extends Controller
      */
     public function efetuarInscricao($id, Request $request)
     {
+        $inscricao = new Inscricao();
+
         $eventoDB = new Eventos();
 
         $associadoDB = new Associado();
 
-        $receber = new Receber();
+        $modalidadesDB = new Modalidades();
 
-        $evento = $eventoDB->where('CODCC', $id)->get()->toArray();
+        $receber = new Receber();
 
         $associado = $associadoDB->where('CPF', session('IDUSER'))->get()->toArray();
 
-        if ( $receber->where('CODASS','=', $associado[0]['CODASS'])->where('CODCC','=', $id)->get()->toArray() )
+        $tipoDoc = DB::select("SELECT A.Cta_CC FROM TipoDoc A WHERE A.coddoc = '001'");
+
+        $sequencia = DB::select('Select Gen_Id(Seq_Insc,1) as SeqInsc from RDB$DATABASE');
+
+        $form = $request->all();
+
+        $i = 0;
+
+        foreach ($form as $key => $value)
         {
-            $associado['associado'] = $associadoDB->where('CPF', session('IDUSER'))->first();
-
-            $associado['eventosDisponiveis'] = $eventoDB->orderBy('CODCC','DESC')->get()->toArray();
-
-            Toast::warning('Você já esta inscrito no Evento Selecionado!');
-
-            return view('interno.eventos.index')->with($associado);
-        }
-        else
-        {
-
-            $dataAtual = Carbon::now()->format('Y-m-d');
-
-            if (( $evento[0]['DT_INI_INS'] <= $dataAtual )&&( $evento[0]['DT_FIM_INS'] >= $dataAtual ))
+            for ($j = 0; $j < count($form); $j++ )
             {
-                $tipoDoc = DB::select("Select
-                  A.Cta_CC,
+                if($key = 'check_'.$i.'_'.$j && $value != '')
+                {
+                    if(Input::get('check_'.$i.'_'.$j) != null)
+                    {
+                        $dados['SEQINSC'] = $sequencia[0]->SEQINSC;
 
-                  D.NomeGen, --Onde está armazenado o GENERATOR da carteira para Nosso Núm.
-                  B.CodCoop as NumCoop,
-                  B.CodCliente as NumCli,
-                  B.AgeBco,B.POSTO,
-                  D.Convenio,C.Cod_Bco
+                        $dados['CODMOD'] = Input::get('check_'.$i.'_'.$j);
 
-                from TipoDoc A
-                Left join CCorrente B on (B.Cta_CC = A.Cta_CC)
-                left join Bancos C on (C.CodBanco = B.CodBanco)
-                left join Carteira D on (D.CodCta = A.Cta_CC and D.CodCart = A.CodCart)
-                where A.coddoc = '001'");
+                        $dados['IDEVENTO'] = Input::get('codEvento_'.$i.'_'.$j);
 
-                $nomeGerador = $tipoDoc[0]->NOMEGEN;
+                        $dados['DATA'] = Carbon::now()->format('Y-m-d');
 
-                $sequencialNossoNumeroResp = DB::select('select Gen_Id('.$nomeGerador.',1) FROM RDB$DATABASE');
+                        $dados['CODMAT'] = $associado[0]['CODASS'];
 
-                $sequencialNossoNumero = $sequencialNossoNumeroResp[0]->GEN_ID;
+                        $dados['QTD'] = Input::get('qtdPistas_'.$i.'_'.$j);
 
-                $digitoVerificador = $this->calculaDigitoVerificador($tipoDoc[0]->NUMCOOP, $tipoDoc[0]->NUMCLI, $sequencialNossoNumero);
+                        $dados['VALOR'] = Input::get('valor_'.$i.'_'.$j);
 
-                $nossoNumeroLimpo = $sequencialNossoNumero.$digitoVerificador;
+                        $dados['CODDOC'] = '001';
 
-                $nossoNumero = str_pad((int)$nossoNumeroLimpo,8,"0",STR_PAD_LEFT);
+                        $dados['CTA_CC'] = $tipoDoc[0]->CTA_CC;
 
+                        $dados['CODCC'] = Input::get('codcc_'.$i.'_'.$j);
 
-
-
-                //Define a data de vencimento do boleto
-                $dataEncerraIns = Carbon::createFromFormat('Y-m-d', $evento[0]['DT_FIM_INS'])->format('d/m/Y');
-                $a = explode('/', $dataEncerraIns);
-                $vencimento = ($a[0] - 1).'/'.$a[1].'/'.$a[2];
-
-                $ctaReceber['EMISSAO'] = Carbon::now()->format('Y-m-d');
-
-                $ctaReceber['DOCTO'] = $nossoNumero;
-
-                $ctaReceber['PARC'] = 1;
-
-                $ctaReceber['CODDOC'] = 001;
-
-                $ctaReceber['CODASS'] = $associado[0]['CODASS'];
-
-                $ctaReceber['VENCTO'] = $evento[0]['DT_FIM_INS'];
-
-                $ctaReceber['V_PARCELA'] = $evento[0]['VALOR'];
-
-                $ctaReceber['CODCC'] = $evento[0]['CODCC'];
-
-                $receber->create($ctaReceber);
-
-
-
-
-                $associado['associado'] = $associadoDB->where('CPF', session('IDUSER'))->first();
-
-                $associado['eventosDisponiveis'] = $eventoDB->orderBy('CODCC','DESC')->get()->toArray();
-
-
-                Toast::success('Inscrição efetuada com Sucesso! Imprima o boleto!');
-                return view('interno.eventos.index')->with($associado);
-
-            }
-            else
-            {
-                $associado['associado'] = $associadoDB->where('CPF', session('IDUSER'))->first();
-
-                $associado['eventosDisponiveis'] = $eventoDB->orderBy('CODCC','DESC')->get()->toArray();
-
-
-                Toast::warning('Evento fora do Prazo de Inscrição!');
-
-                return view('interno.eventos.index')->with($associado);
-
+                        $inscricao->create($dados);
+                    }
+                }
             }
 
+            $i++;
         }
+
+        DB::select("Execute Procedure SP_Boletos(".$sequencia[0]->SEQINSC.", 'I')");
+
+        if ( $eventoDB->where('DAT_INI','<=', Carbon::now()->format('Y-m-d'))->where('DAT_FIM','>=', Carbon::now()->format('Y-m-d'))->get()->toArray() )
+        {
+            $anoAtual = Carbon::now()->format('Y');
+
+            $associado['eventosDisponiveis'] = $eventoDB->where('DAT_INI','<=', Carbon::now()->format('Y-m-d'))->where('DAT_FIM','>=', Carbon::now()->format('Y-m-d'))->get()->toArray();
+
+            $associado['modalidades'] = $modalidadesDB->where('ANOBASE','=', $anoAtual)->get()->toArray();
+        }
+
+        $associado['associado'] = $associadoDB->where('CPF', session('IDUSER'))->first();
+
+        $codAssociado = $associadoDB->where('CPF', session('IDUSER'))->get()->toArray();
+
+        $associado['boletos'] = $receber->where('CODASS', '=', $codAssociado[0]['CODASS'])->get()->toArray();
+
+
+        Toast::success('Inscrição efetuada com Sucesso! Imprima o boleto!');
+
+        return view('interno.financeiro.index')->with($associado);
+
+
+
+        /*
+
+                $eventoDB = new Eventos();
+
+                $associadoDB = new Associado();
+
+                $receber = new Receber();
+
+                $evento = $eventoDB->where('CODCC', $id)->get()->toArray();
+
+                $associado = $associadoDB->where('CPF', session('IDUSER'))->get()->toArray();
+
+                if ( $receber->where('CODASS','=', $associado[0]['CODASS'])->where('CODCC','=', $id)->get()->toArray() )
+                {
+                    $associado['associado'] = $associadoDB->where('CPF', session('IDUSER'))->first();
+
+                    $associado['eventosDisponiveis'] = $eventoDB->orderBy('CODCC','DESC')->get()->toArray();
+
+                    Toast::warning('Você já esta inscrito no Evento Selecionado!');
+
+                    return view('interno.eventos.index')->with($associado);
+                }
+                else
+                {
+
+                    $dataAtual = Carbon::now()->format('Y-m-d');
+
+                    if (( $evento[0]['DT_INI_INS'] <= $dataAtual )&&( $evento[0]['DT_FIM_INS'] >= $dataAtual ))
+                    {
+                        $tipoDoc = DB::select("Select
+                          A.Cta_CC,
+
+                          D.NomeGen, --Onde está armazenado o GENERATOR da carteira para Nosso Núm.
+                          B.CodCoop as NumCoop,
+                          B.CodCliente as NumCli,
+                          B.AgeBco,B.POSTO,
+                          D.Convenio,C.Cod_Bco
+
+                        from TipoDoc A
+                        Left join CCorrente B on (B.Cta_CC = A.Cta_CC)
+                        left join Bancos C on (C.CodBanco = B.CodBanco)
+                        left join Carteira D on (D.CodCta = A.Cta_CC and D.CodCart = A.CodCart)
+                        where A.coddoc = '001'");
+
+                        $nomeGerador = $tipoDoc[0]->NOMEGEN;
+
+                        $sequencialNossoNumeroResp = DB::select('select Gen_Id('.$nomeGerador.',1) FROM RDB$DATABASE');
+
+                        $sequencialNossoNumero = $sequencialNossoNumeroResp[0]->GEN_ID;
+
+                        $digitoVerificador = $this->calculaDigitoVerificador($tipoDoc[0]->NUMCOOP, $tipoDoc[0]->NUMCLI, $sequencialNossoNumero);
+
+                        $nossoNumeroLimpo = $sequencialNossoNumero.$digitoVerificador;
+
+                        $nossoNumero = str_pad((int)$nossoNumeroLimpo,8,"0",STR_PAD_LEFT);
+
+
+
+
+                        //Define a data de vencimento do boleto
+                        $dataEncerraIns = Carbon::createFromFormat('Y-m-d', $evento[0]['DT_FIM_INS'])->format('d/m/Y');
+                        $a = explode('/', $dataEncerraIns);
+                        $vencimento = ($a[0] - 1).'/'.$a[1].'/'.$a[2];
+
+                        $ctaReceber['EMISSAO'] = Carbon::now()->format('Y-m-d');
+
+                        $ctaReceber['DOCTO'] = $nossoNumero;
+
+                        $ctaReceber['PARC'] = 1;
+
+                        $ctaReceber['CODDOC'] = 001;
+
+                        $ctaReceber['CODASS'] = $associado[0]['CODASS'];
+
+                        $ctaReceber['VENCTO'] = $evento[0]['DT_FIM_INS'];
+
+                        $ctaReceber['V_PARCELA'] = $evento[0]['VALOR'];
+
+                        $ctaReceber['CODCC'] = $evento[0]['CODCC'];
+
+                        $receber->create($ctaReceber);
+
+
+
+
+                        $associado['associado'] = $associadoDB->where('CPF', session('IDUSER'))->first();
+
+                        $associado['eventosDisponiveis'] = $eventoDB->orderBy('CODCC','DESC')->get()->toArray();
+
+
+                        Toast::success('Inscrição efetuada com Sucesso! Imprima o boleto!');
+                        return view('interno.eventos.index')->with($associado);
+
+                    }
+                    else
+                    {
+                        $associado['associado'] = $associadoDB->where('CPF', session('IDUSER'))->first();
+
+                        $associado['eventosDisponiveis'] = $eventoDB->orderBy('CODCC','DESC')->get()->toArray();
+
+
+                        Toast::warning('Evento fora do Prazo de Inscrição!');
+
+                        return view('interno.eventos.index')->with($associado);
+
+                    }
+
+                }
+        */
     }
 
     public function gerarBoleto($id)
@@ -230,7 +356,7 @@ class EventosController extends Controller
 
         $associado = $associadoDB->where('CPF', session('IDUSER'))->first();
 
-        $receber = $receberDB->where('CODASS',$associado->CODASS)->where('CODCC', $id)->get()->toArray();
+        $receber = $receberDB->where('CODASS',$associado->CODASS)->where('DOCTOVND', $id)->get()->toArray();
 
         if($receber <> NULL)
         {
@@ -262,9 +388,18 @@ class EventosController extends Controller
 
             $eventosdb = new Eventos();
 
-            $associado['associado'] = $associadodb->where('CPF', session('IDUSER'))->first();
+            $modalidadesDB = new Modalidades();
 
-            $associado['eventosDisponiveis'] = $eventosdb->orderBy('CODCC','DESC')->get()->toArray();
+            if ( $eventosdb->where('DAT_INI','<=', Carbon::now()->format('Y-m-d'))->where('DAT_FIM','>=', Carbon::now()->format('Y-m-d'))->get()->toArray() )
+            {
+                $anoAtual = Carbon::now()->format('Y');
+
+                $associado['eventosDisponiveis'] = $eventosdb->where('DAT_INI','<=', Carbon::now()->format('Y-m-d'))->where('DAT_FIM','>=', Carbon::now()->format('Y-m-d'))->get()->toArray();
+
+                $associado['modalidades'] = $modalidadesDB->where('ANOBASE','=', $anoAtual)->get()->toArray();
+            }
+
+            $associado['associado'] = $associadodb->where('CPF', session('IDUSER'))->first();
 
             Toast::warning('Você não esta inscrito no Evento Selecionado!');
 

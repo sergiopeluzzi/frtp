@@ -34,5 +34,6 @@ Route::get('/login/recuperaSenha', ['as' => 'login.recuperaSenha', 'uses' => 'Lo
 Route::post('/login/alteraSenha', ['as' => 'login.alteraSenha', 'uses' => 'LoginController@alteraSenha']);
 
 Route::get('/interno/eventos', ['as' => 'interno.eventos.index', 'uses' => 'EventosController@index']);
-Route::get('/interno/eventos/efetuarInscricao/{id}', ['as' => 'interno.eventos.efetuarInscricao', 'uses' => 'EventosController@efetuarInscricao']);
+Route::post('/interno/eventos/efetuarInscricao/{id}', ['as' => 'interno.eventos.efetuarInscricao', 'uses' => 'EventosController@efetuarInscricao']);
 Route::get('/interno/eventos/gerarBoleto/{id}', ['as' => 'interno.eventos.gerarBoleto', 'uses' => 'EventosController@gerarBoleto']);
+Route::get('/interno/financeiro', ['as' => 'interno.financeiro.index', 'uses' => 'FinanceiroController@index']);

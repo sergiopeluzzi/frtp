@@ -12,7 +12,7 @@ class Receber extends Model implements Transformable
 
     protected $table = 'CTARECEBER';
 
-    protected $fillable = ['EMISSAO','DOCTO','PARC','CODDOC','CODASS','VENCTO','V_PARCELA','CODCC'];
+    protected $fillable = ['EMISSAO','DOCTO','PARC','CODDOC','CODASS','VENCTO','V_PARCELA','CODCC','DOCTOVND'];
 
     public $timestamps = false;
 

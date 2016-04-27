@@ -76,9 +76,11 @@
                 @if( isset($associado) )
                     <li><a href="{{ route('interno.associados.edit', ['IDUSER' => session('IDUSER')]) }}"><i class="fa fa-book"></i> <span>Meus Dados</span></a></li>
                     <li><a href="{{ route('interno.eventos.index') }}"><i class="fa fa-book"></i> <span>Eventos</span></a></li>
+                    <li><a href="{{ route('interno.financeiro.index') }}"><i class="fa fa-book"></i> <span>Financeiro</span></a></li>
                 @else
                     <li><a href="{{ route('interno.associados.create') }}"><i class="fa fa-book"></i> <span>Filie-se</span></a></li>
                 @endif
+
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-folder"></i> <span>Documentos</span>
@@ -358,8 +360,13 @@
 </script>
 -->
 
-
-
+<!-- Switch
+<script type="text/javascript">
+    $(function(){
+        $("[name='my-checkbox']").bootstrapSwitch();
+    });
+</script>
+-->
 
 <!-- Script que vai adicionar as máscaras nos campos -->
 <script type="text/javascript">
@@ -421,9 +428,64 @@
 
 </script>
 
+<script>
+    function participaModalidade(nomeElemento,idEvento)
+    {
+        var valor     = document.getElementById('valor.'+nomeElemento).value;
+        var qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
+        var total = 0;
+        var totalModalidade = 0;
+        var final = 0;
 
+        total           += document.getElementById('total.'+idEvento).value;
 
+        if(document.getElementById('check.'+nomeElemento).checked == true)
+        {
+            if( document.getElementById('qtdPistas.'+nomeElemento).value == null || document.getElementById('qtdPistas.'+nomeElemento).value == 0)
+            {
+                document.getElementById('check.'+nomeElemento).checked = false;
+                document.getElementById('totalModalidade.'+nomeElemento).value = null;
+            }
+            else
+            {
+                totalModalidade = valor * qtdPistas;
+                document.getElementById('totalModalidade.'+nomeElemento).value = parseFloat(totalModalidade).toFixed(2);
 
+                final = (parseFloat(total) + parseFloat(totalModalidade)).toFixed(2);
+
+                document.getElementById('total.'+idEvento).value = final;
+
+            }
+        }
+        else
+        {
+            if(document.getElementById('qtdPistas.'+nomeElemento).value == 1)
+            {
+                var tirar = document.getElementById('totalModalidade.'+nomeElemento).value;
+
+                document.getElementById('totalModalidade.'+nomeElemento).value = null;
+
+                final = (parseFloat(total) - parseFloat(tirar)).toFixed(2);
+
+                document.getElementById('total.'+idEvento).value = final;
+
+            }
+            else
+            {
+                var tirar = document.getElementById('totalModalidade.'+nomeElemento).value;
+
+                document.getElementById('totalModalidade.'+nomeElemento).value = null;
+                document.getElementById('qtdPistas.'+nomeElemento).value = null;
+
+                final = (parseFloat(total) - parseFloat(tirar)).toFixed(2);
+
+                document.getElementById('total.'+idEvento).value = final;
+
+            }
+        }
+
+    };
+</script>
 </body>
 
 </html>
