@@ -6,17 +6,17 @@
 <div class="row">
     <div class="form-group col-md-12">
         {!! Form::label('NOME', 'Nome:') !!}
-        {!! Form::text('NOME', '', ['class' => 'form-control']) !!}
+        {!! Form::text('NOME', '', ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
     </div>
 </div>
 <div class="row">
     <div class="form-group col-md-6">
         {!! Form::label('IDUSER', 'CPF:') !!}
-        {!! Form::text('IDUSER', '', ['class' => 'form-control', 'onkeyup' => "alta(this)]) !!}
+        {!! Form::text('IDUSER', '', ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('NOM_USER', 'Usuário:') !!}
-        {!! Form::text('NOM_USER', '', ['class' => 'form-control']) !!}
+        {!! Form::text('NOM_USER', '', ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
     </div>
 </div>
 <div class="row">
@@ -27,6 +27,7 @@
     <div class="form-group col-md-6">
         {!! Form::label('SENHA2', 'Confirma Senha:') !!}
         {!! Form::password('SENHA2', ['class' => 'form-control']) !!}
+        <input type="text" onchange="this.value = this.value.toUpperCase()" >
     </div>
 </div>
 <div class="pull-left">

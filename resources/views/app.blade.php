@@ -191,9 +191,6 @@
 
 </script>
 
-<script language="javascript">
-    function alta(valor){ valor.value=valor.value.toLowerCase();	}
-</script>
     <script>
         var password = document.getElementById("SENHA"), confirm_password = document.getElementById("SENHA2");
         function validatePassword(){

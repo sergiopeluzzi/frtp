@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         {!! Form::label('NOM_USER', 'USUÁRIO:') !!}
-                        {!! Form::text('NOM_USER', '', ['class' => 'form-control']) !!}
+                        {!! Form::text('NOM_USER', '', ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
                     </div>
                     <div class="form-group col-md-12">
                         {!! Form::label('SENHA', 'SENHA:') !!}
