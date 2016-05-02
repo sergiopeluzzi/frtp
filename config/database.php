@@ -86,10 +86,10 @@ return [
         ],
         'firebird' => [
             'driver'   => 'firebird',
-            'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE','/storage/firebird/APPLICATION.FDB'),
-            'username' => env('DB_USERNAME', 'sysdba'),
-            'password' => env('DB_PASSWORD', 'masterkey'),
+            'host'     => env('DB_HOST', 'firebird03-farm62.kinghost.net'),
+            'database' => env('DB_DATABASE','/firebird/frtp.gdb'),
+            'username' => env('DB_USERNAME', 'frtp'),
+            'password' => env('DB_PASSWORD', '38super'),
             'charset'  => env('DB_CHARSET', 'UTF8'),
         ],
 

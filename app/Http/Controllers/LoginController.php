@@ -130,10 +130,10 @@ class LoginController extends Controller
             $data['cpf'] = $userSelecionado[0]['IDUSER'];
             $data['email'] = $associadoSelecionado[0]['EMAIL'];
 
-            Mail::send('login.emailRecuperaSenha', $data, function($m)
+            Mail::send('login.emailRecuperaSenha', $data, function ($m) use ($emailAssociado)
             {
-                $m->from('alessandrorodcruz@gmail.com', 'FRTP - Federação Rondoniense de Tiro Prático');
-                $m->to('monicaridevanites@gmail.com')
+                $m->from('contato@frtp.org.br', 'FRTP - Federação Rondoniense de Tiro Prático');
+                $m->to($emailAssociado)
                     ->subject('Recuperação de Senha ');
             });
 
@@ -173,3 +173,4 @@ class LoginController extends Controller
         }
     }
 }
+	

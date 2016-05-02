@@ -12,7 +12,7 @@
 <div class="row">
     <div class="form-group col-md-6">
         {!! Form::label('IDUSER', 'CPF:') !!}
-        {!! Form::text('IDUSER', '', ['class' => 'form-control']) !!}
+        {!! Form::text('IDUSER', '', ['class' => 'form-control', 'onkeyup' => "alta(this)]) !!}
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('NOM_USER', 'Usuário:') !!}
