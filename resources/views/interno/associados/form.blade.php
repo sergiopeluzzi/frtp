@@ -46,18 +46,12 @@
                 {!! Form::label('CIDADE', 'Cidade - UF:') !!}
                 <select class="form-control select2" id="CODCID" name="CODCID">
                     @if(isset($associado->CPF))
-
                         @foreach($cidades as $cidade)
                             @if($associado->CODCID == $cidade->CODCID )
                                 <option value="{{ $cidade->CODCID }}" selected>{{ $cidade->DSCCID . ' - ' . $cidade->UFCID }}</option>
                             @endif
                                 <option value="{{ $cidade->CODCID }}">{{ $cidade->DSCCID . ' - ' . $cidade->UFCID }}</option>nt
                         @endforeach
-
-
-
-
-
                     @else
                         @foreach($cidades as $cidade)
                             <option value="{{ $cidade->CODCID }}">{{ $cidade->DSCCID . ' - ' . $cidade->UFCID }}</option>
@@ -129,10 +123,12 @@
                 <select class="form-control select2" id="CID_COM" name="CID_COM">
                     @if(isset($associado->CPF))
 
-
-
-                        <option value="{{$associado->CID_COM }}">{{ $associado->CID_COM }}</option>
-
+                        @foreach($cidades as $cidade)
+                            @if($associado->CID_COM == $cidade->CODCID )
+                                <option value="{{ $cidade->CODCID }}" selected>{{ $cidade->DSCCID . ' - ' . $cidade->UFCID }}</option>
+                            @endif
+                            <option value="{{ $cidade->CODCID }}">{{ $cidade->DSCCID . ' - ' . $cidade->UFCID }}</option>nt
+                        @endforeach
 
                     @else
                         @foreach($cidades as $cidade)
