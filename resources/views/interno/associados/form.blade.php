@@ -6,15 +6,15 @@
         <div class="row">
             <div class="form-group col-md-6">
                 {!! Form::label('NOMASS', 'Nome:') !!}
-                {!! Form::text('NOMASS', isset($associado->NOMASS) ? $associado->NOMASS : session('NOME'), ['class' => 'form-control', 'readonly']) !!}
+                {!! Form::text('NOMASS', isset($associado->NOMASS) ? $associado->NOMASS : session('NOME'), ['class' => 'form-control', 'readonly', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
             <div class="form-group col-md-2">
                 {!! Form::label('SEXO', 'Sexo:') !!}
-                {!! Form::select('SEXO', ['M' => 'Masculino', 'F' => 'Feminino'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) !!}
+                {!! Form::select('SEXO', ['M' => 'MASCULINO', 'F' => 'FEMININO'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) !!}
             </div>
             <div class="form-group col-md-2">
                 {!! Form::label('ECIVIL', 'Estado Civil:') !!}
-                {!! Form::select('ECIVIL', ['Solteiro(a)' => 'Solteiro(a)', 'Casado(a)' => 'Casado(a)', 'Separado(a)' => 'Separado(a)', 'Divorciado(a)' => 'Divorciado(a)', 'Viúvo(a)' => 'Viúvo(a)'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) !!}
+                {!! Form::select('ECIVIL', ['SOLTEIRO(A)' => 'SOLTEIRO(A)', 'CASADO(A)' => 'CASADO(A)', 'SEPARADO(A)' => 'SEPARADO(A)', 'DIVORCIADO(A)' => 'DIVORCIADO(A)', 'VIÚVO(A)' => 'VIÚVO(A)'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) !!}
             </div>
         </div>
         <div class="row">
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group col-md-4">
                 {!! Form::label('RG', 'RG:') !!}
-                {!! Form::text('RG', isset($associado->RG) ? $associado->RG : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('RG', isset($associado->RG) ? $associado->RG : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
             <div class="form-group col-md-4">
                 {!! Form::label('NASCTO', 'Data Nascimento:') !!}
@@ -34,11 +34,11 @@
         <div class="row">
             <div class="form-group col-md-8">
                 {!! Form::label('ENDERECO', 'Endereço:') !!}
-                {!! Form::text('ENDERECO', isset($associado->ENDERECO) ? $associado->ENDERECO : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('ENDERECO', isset($associado->ENDERECO) ? $associado->ENDERECO : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
             <div class="form-group col-md-4">
                 {!! Form::label('BAIRRO', 'Bairro:') !!}
-                {!! Form::text('BAIRRO', isset($associado->BAIRRO) ? $associado->BAIRRO : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('BAIRRO', isset($associado->BAIRRO) ? $associado->BAIRRO : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
         </div>
         <div class="row">
@@ -47,8 +47,14 @@
                 <select class="form-control select2" id="CODCID" name="CODCID">
                     @if(isset($associado->CPF))
 
+                        @foreach($cidades as $cidade)
+                            @if($associado->CODCID == $cidade->CODCID )
+                                <option value="{{ $cidade->CODCID }}" selected>{{ $cidade->DSCCID . ' - ' . $cidade->UFCID }}</option>
+                            @endif
+                                <option value="{{ $cidade->CODCID }}">{{ $cidade->DSCCID . ' - ' . $cidade->UFCID }}</option>nt
+                        @endforeach
 
-                        <option value="{{$associado->CODCID }}">{{ $associado->CODCID }}</option>
+
 
 
 
@@ -81,21 +87,21 @@
         <div class="row">
             <div class="form-group col-md-6">
                 {!! Form::label('PROFISSAO', 'Profissão:') !!}
-                {!! Form::text('PROFISSAO', isset($associado->PROFISSAO) ? $associado->PROFISSAO : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('PROFISSAO', isset($associado->PROFISSAO) ? $associado->PROFISSAO : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
             <div class="form-group col-md-6">
                 {!! Form::label('NATURALI', 'Nascido em:') !!}
-                {!! Form::text('NATURALI', isset($associado->NATURALI) ? $associado->NATURALI : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('NATURALI', isset($associado->NATURALI) ? $associado->NATURALI : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6">
                 {!! Form::label('PAI', 'Nome do Pai:') !!}
-                {!! Form::text('PAI', isset($associado->PAI) ? $associado->PAI : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('PAI', isset($associado->PAI) ? $associado->PAI : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
             <div class="form-group col-md-6">
                 {!! Form::label('MAE', 'Nome da Mãe:') !!}
-                {!! Form::text('MAE', isset($associado->MAE) ? $associado->MAE : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('MAE', isset($associado->MAE) ? $associado->MAE : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
         </div>
         </br>
@@ -104,17 +110,17 @@
         <div class="row">
             <div class="form-group col-md-12">
                 {!! Form::label('NOME_COM', 'Local de Trabalho:') !!}
-                {!! Form::text('NOME_COM', isset($associado->NOME_COM) ? $associado->NOME_COM : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('NOME_COM', isset($associado->NOME_COM) ? $associado->NOME_COM : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-8">
                 {!! Form::label('END_COM', 'Endereço:') !!}
-                {!! Form::text('END_COM', isset($associado->END_COM) ? $associado->END_COM : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('END_COM', isset($associado->END_COM) ? $associado->END_COM : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
             <div class="form-group col-md-4">
                 {!! Form::label('BAI_COM', 'Bairro:') !!}
-                {!! Form::text('BAI_COM', isset($associado->BAI_COM) ? $associado->BAI_COM : NULL, ['class' => 'form-control']) !!}
+                {!! Form::text('BAI_COM', isset($associado->BAI_COM) ? $associado->BAI_COM : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']) !!}
             </div>
         </div>
         <div class="row">

@@ -52,9 +52,11 @@ class AssociadosController extends Controller
 
     public function edit($CPF)
     {
+        $data['cidades'] = Cidade::all();
+
         $associado = $this->associado->where('CPF', $CPF)->first();
 
-        return view('interno.associados.edit')->with(compact('associado'));
+        return view('interno.associados.edit')->with(compact('associado'))->with($data);
     }
 
 

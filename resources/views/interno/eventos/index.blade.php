@@ -13,7 +13,7 @@
                             <div class="box-header with-border">
                                 <h4 class="box-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#{{ $evento['IDEVENTO'] }}">
-                                        {{ $evento['NOME_EVENTO'] }}
+                                        {{ $evento['NOME_EVENTO'] }} &nbsp;&nbsp;&nbsp;&nbsp;Data: {{ $evento['DATA_EVENTO'] }}
                                     </a>
                                 </h4>
                             </div>
