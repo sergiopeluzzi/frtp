@@ -373,16 +373,18 @@ class EventosController extends Controller
         }
 
         $dscMod = '';
+        $qtd = '';
 
         for($j=0; $j<count($a); $j++)
         {
             for($l=0; $l<count($a[$j]); $l++)
             {
-                $dscMod = $dscMod.''.$a[$j][$l]['DSCMOD'].'<br>- ';
+                $dscMod = $dscMod.$inscricao[$j]['QTD']{0}.'x'.' | '.$a[$j][$l]['DSCMOD'].'<br />';
+                //$qtd = $qtd.$inscricao[$j]['QTD']{0}.'x';
             }
         }
 
-
+        $demostrativo = 'EVENTO: '.$evento[0]['NOME_EVENTO'].';<br />INSCRIÇÃO(ÕES) | MODALIDADES <br />'.$dscMod;
 
         if($receber <> NULL)
         {
@@ -407,7 +409,7 @@ class EventosController extends Controller
                 'convenio' => 3197, // 4, 6 ou 7 dígitos
                 'especieDoc' => 'DM',
                 'numeroDocumento' => $receber[0]['SEQDOC'],
-                'descricaoDemonstrativo' => 'Referente a inscrição no EVENTO: '.$evento[0]['NOME_EVENTO'].';<br />MODALIDADE(S)<br />- '.$dscMod,
+                'descricaoDemonstrativo' => $demostrativo,
                 'instrucoes' => $instrucao[0]->INSTRU_BCO.'<br />'.$instrucao[0]->INSTRU_COB,
             ));
 
