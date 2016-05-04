@@ -230,7 +230,6 @@ class EventosController extends Controller
 
         $associado['boletos'] = $receber->where('CODASS', '=', $codAssociado[0]['CODASS'])->get()->toArray();
 
-
         Toast::success('Inscrição efetuada com Sucesso! Imprima o boleto!');
 
         return view('interno.financeiro.index')->with($associado);
@@ -354,15 +353,46 @@ class EventosController extends Controller
 
         $receberDB = new Receber();
 
+        $eventosDB = new Eventos();
+
+        $inscricaoDB = new Inscricao();
+
+        $modalidadesDB = new Modalidades();
+
         $associado = $associadoDB->where('CPF', session('IDUSER'))->first();
 
         $receber = $receberDB->where('CODASS',$associado->CODASS)->where('DOCTOVND', $id)->get()->toArray();
 
+        $inscricao = $inscricaoDB->where('SEQINSC',$id)->where('CODMAT',$associado->CODASS)->get()->toArray();
+
+        $evento = $eventosDB->where('IDEVENTO',$inscricao[0]['IDEVENTO'])->get()->toArray();
+
+        for($i=0; $i<count($inscricao); $i++)
+        {
+            $a[] = $modalidadesDB->where('CODMOD',$inscricao[$i]['CODMOD'])->get()->toArray();
+        }
+
+        $dscMod = '';
+
+        for($j=0; $j<count($a); $j++)
+        {
+            for($l=0; $l<count($a[$j]); $l++)
+            {
+                $dscMod = $dscMod.''.$a[$j][$l]['DSCMOD'].'<br>- ';
+            }
+        }
+
+
+
         if($receber <> NULL)
         {
             $cidade = DB::select("Select DSCCID,UFCID FROM CIDADES WHERE CODCID = $associado->CODCID");
+            $carteira = DB::select("Select CODCART FROM TIPODOC WHERE CODDOC = " .$receber[0]['CODDOC']. "");
+            $instrucao = DB::select("Select INSTRU_BCO, INSTRU_COB, CODEMP FROM CCORRENTE WHERE CTA_CC = " .$receber[0]['CTA_CC']. "");
+            $dadosCedente = DB::select("Select * FROM EMPRESA WHERE  CODEMP = " .$instrucao[0]->CODEMP. "");
+
             $sacado = new Agente($associado->NOMASS, $associado->CPF, $associado->ENDERECO, $associado->CEP, $cidade[0]->DSCCID, $cidade[0]->UFCID);
-            $cedente = new Agente('Empresa de cosméticos LTDA', '02.123.123/0001-11', 'CLS 403 Lj 23', '71000-000', 'Brasília', 'DF');
+            $cedente = new Agente($dadosCedente[0]->NOMEEMPRESA, $dadosCedente[0]->CNPJ, $dadosCedente[0]->ENDERECO, $dadosCedente[0]->CEP, $dadosCedente[0]->CID_REP);
 
             $boleto = new Sicoob(array(
                 // Parâmetros obrigatórios
@@ -372,9 +402,13 @@ class EventosController extends Controller
                 'sacado' => $sacado,
                 'cedente' => $cedente,
                 'agencia' => 3271, // Até 4 dígitos
-                'carteira' => 18,
+                'carteira' => $carteira[0]->CODCART,
                 'conta' => 370258, // Até 8 dígitos
                 'convenio' => 3197, // 4, 6 ou 7 dígitos
+                'especieDoc' => 'DM',
+                'numeroDocumento' => $receber[0]['SEQDOC'],
+                'descricaoDemonstrativo' => 'Referente a inscrição no EVENTO: '.$evento[0]['NOME_EVENTO'].';<br />MODALIDADE(S)<br />- '.$dscMod,
+                'instrucoes' => $instrucao[0]->INSTRU_BCO.'<br />'.$instrucao[0]->INSTRU_COB,
             ));
 
             echo $boleto->getOutput();
@@ -382,24 +416,19 @@ class EventosController extends Controller
         }
         else
         {
-
             $associado = NULL;
-            $associadodb = new Associado();
 
-            $eventosdb = new Eventos();
 
-            $modalidadesDB = new Modalidades();
-
-            if ( $eventosdb->where('DAT_INI','<=', Carbon::now()->format('Y-m-d'))->where('DAT_FIM','>=', Carbon::now()->format('Y-m-d'))->get()->toArray() )
+            if ( $eventosDB->where('DAT_INI','<=', Carbon::now()->format('Y-m-d'))->where('DAT_FIM','>=', Carbon::now()->format('Y-m-d'))->get()->toArray() )
             {
                 $anoAtual = Carbon::now()->format('Y');
 
-                $associado['eventosDisponiveis'] = $eventosdb->where('DAT_INI','<=', Carbon::now()->format('Y-m-d'))->where('DAT_FIM','>=', Carbon::now()->format('Y-m-d'))->get()->toArray();
+                $associado['eventosDisponiveis'] = $eventosDB->where('DAT_INI','<=', Carbon::now()->format('Y-m-d'))->where('DAT_FIM','>=', Carbon::now()->format('Y-m-d'))->get()->toArray();
 
                 $associado['modalidades'] = $modalidadesDB->where('ANOBASE','=', $anoAtual)->get()->toArray();
             }
 
-            $associado['associado'] = $associadodb->where('CPF', session('IDUSER'))->first();
+            $associado['associado'] = $associadoDB->where('CPF', session('IDUSER'))->first();
 
             Toast::warning('Você não esta inscrito no Evento Selecionado!');
 

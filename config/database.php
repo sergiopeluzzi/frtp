@@ -90,7 +90,7 @@ return [
             'database' => env('DB_DATABASE','/firebird/frtp.gdb'),
             'username' => env('DB_USERNAME', 'frtp'),
             'password' => env('DB_PASSWORD', '38super'),
-            'charset'  => env('DB_CHARSET', 'UTF8'),
+                'charset'  => env('DB_CHARSET', 'UTF8'),
         ],
 
     ],

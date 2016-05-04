@@ -49,7 +49,7 @@ abstract class BoletoAbstract
      * @var array Nome espécie das moedas
      */
     protected static $especie = array(
-        self::MOEDA_REAL => 'REAL'
+        self::MOEDA_REAL => 'R$'
     );
 
     /**
@@ -1463,9 +1463,10 @@ abstract class BoletoAbstract
     protected static function zeroFill($valor, $digitos)
     {
         // TODO: Retirar isso daqui, e criar um método para validar os dados
-        if (strlen($valor) > $digitos) {
+       /* if (strlen($valor) > $digitos) {
             throw new Exception("O valor {$valor} possui mais de {$digitos} dígitos!");
         }
+       */
 
         return str_pad($valor, $digitos, '0', STR_PAD_LEFT);
     }

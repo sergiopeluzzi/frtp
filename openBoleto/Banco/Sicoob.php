@@ -63,7 +63,7 @@ class Sicoob extends BoletoAbstract
      * Define as carteiras disponíveis para este banco
      * @var array
      */
-    protected $carteiras = array('31', '11', '16', '17', '18', '12', '51', '21');
+    protected $carteiras = array('31', '11', '16', '17', '18', '12', '51', '21', '1-02');
 
     /**
      * Define o número do convênio (4, 6 ou 7 caracteres)
