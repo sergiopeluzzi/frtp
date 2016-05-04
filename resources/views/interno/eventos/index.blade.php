@@ -28,9 +28,9 @@
                                         <thead>
                                             <tr >
                                                 <th ></th>
-                                                <th style="text-align: center;">MODALIDADES</th>
-                                                <th style="text-align: center;">VALOR R$</th>
-                                                <th style="text-align: center;">QTD PISTAS</th>
+                                                <th style="text-align: center;">MODALIDADES DO EVENTO</th>
+                                                <th style="text-align: center;">VALOR</th>
+                                                <th style="text-align: center;">INSCRIÇÃO(ÕES)</th>
                                                 <th style="text-align: center;">TOTAL MODALIDADE</th>
                                             </tr>
                                         </thead>
@@ -64,9 +64,12 @@
                                                         @endif
                                                     </td>
                                                     <td align="center" width="100"><input type="text" style="text-align: center;" id="totalModalidade.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="totalModalidade.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" readonly></td>
-                                                    <td>
-                                                        <input type="hidden" id="insert.{{$evento['IDEVENTO'].'.'.$modalidade['CODMOD']}}" name="insert.{{$evento['IDEVENTO'].'.'.$modalidade['CODMOD']}}">
-                                                    </td>
+
+                                                    <!-- <td>
+                                                        <input type="hidden" id="insert.////$evento['IDEVENTO'].'.'.$modalidade['CODMOD']}}" name="insert.//$evento['IDEVENTO'].'.'.$modalidade['CODMOD']}}">
+                                                    </td> -->
+
+
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -76,7 +79,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="5" align="center">
-                                                    <button type='submit' class="btn btn-lg btn-success"><i class="glyphicon glyphicon-ok"></i> Realizar Inscrição!</button>
+                                                    <button type='submit' class="btn btn-lg btn-success"><i class="glyphicon glyphicon-ok"></i> Realizar Inscrição</button>
                                                 </td>
                                             </tr>
                                         {!! Form::close() !!}

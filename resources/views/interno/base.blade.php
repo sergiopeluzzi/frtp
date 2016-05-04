@@ -70,7 +70,7 @@
 
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li class="header">Navegação</li>
+                <li class="header" style="color:#FFFFFF";>Navegação</li>
 
 
                 @if( isset($associado) )
