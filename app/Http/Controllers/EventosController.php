@@ -393,14 +393,22 @@ class EventosController extends Controller
             $instrucao = DB::select("Select INSTRU_BCO, INSTRU_COB, CODEMP FROM CCORRENTE WHERE CTA_CC = " .$receber[0]['CTA_CC']. "");
             $dadosCedente = DB::select("Select * FROM EMPRESA WHERE  CODEMP = " .$instrucao[0]->CODEMP. "");
 
+            $seq = DB::select("select SEQDOC from CTARECEBER WHERE DOCTOVND = $id");
+            $linhaDigCodBarra = DB::select("select CodBarra,LinhaDig from Sp_Codbarra_Linhadig(".$seq[0]->SEQDOC.")");
+
             $sacado = new Agente($associado->NOMASS, $associado->CPF, $associado->ENDERECO, $associado->CEP, $cidade[0]->DSCCID, $cidade[0]->UFCID);
             $cedente = new Agente($dadosCedente[0]->NOMEEMPRESA, $dadosCedente[0]->CNPJ, $dadosCedente[0]->ENDERECO, $dadosCedente[0]->CEP, $dadosCedente[0]->CID_REP);
+
+            $codigoBarras = $linhaDigCodBarra[0]->CODBARRA;
+            $linhaDig = $linhaDigCodBarra[0]->LINHADIG;
+
+            $nossoNumero = substr_replace($receber[0]['DOCTO'],'-',-1,-1);
 
             $boleto = new Sicoob(array(
                 // Parâmetros obrigatórios
                 'dataVencimento' => new DateTime($receber[0]['VENCTO']),
                 'valor' => $receber[0]['V_PARCELA'],
-                'sequencial' => $receber[0]['DOCTO'], // Para gerar o nosso número
+                'sequencial' => $nossoNumero, // Para gerar o nosso número
                 'sacado' => $sacado,
                 'cedente' => $cedente,
                 'agencia' => 3271, // Até 4 dígitos
@@ -411,6 +419,8 @@ class EventosController extends Controller
                 'numeroDocumento' => $receber[0]['SEQDOC'],
                 'descricaoDemonstrativo' => $demostrativo,
                 'instrucoes' => $instrucao[0]->INSTRU_BCO.'<br />'.$instrucao[0]->INSTRU_COB,
+                'digitavelLinha' => $linhaDig,
+                'codigoDeBarras' => $codigoBarras,
             ));
 
             echo $boleto->getOutput();

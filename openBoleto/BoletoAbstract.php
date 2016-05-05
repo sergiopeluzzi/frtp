@@ -275,6 +275,10 @@ abstract class BoletoAbstract
      */
     protected $logoBanco;
 
+    protected $digitavelLinha;
+
+    protected $codigoDeBarras;
+
     /**
      * Construtor
      *
@@ -330,6 +334,38 @@ abstract class BoletoAbstract
     public function getAgencia()
     {
         return $this->agencia;
+    }
+
+    public function setDigitavelLinha($digitavelLinha)
+    {
+        $this->digitavelLinha = $digitavelLinha;
+        return $this;
+    }
+
+    /**
+     * Retorna a agência
+     *
+     * @return int
+     */
+    public function getDigitavelLinha()
+    {
+        return $this->digitavelLinha;
+    }
+
+    public function setCodigoDeBarras($codigoDeBarras)
+    {
+        $this->codigoDeBarras = $codigoDeBarras;
+        return $this;
+    }
+
+    /**
+     * Retorna a agência
+     *
+     * @return int
+     */
+    public function getCodigoDeBarras()
+    {
+        return $this->codigoDeBarras;
     }
 
     /**
@@ -1185,7 +1221,7 @@ abstract class BoletoAbstract
         ob_start();
 
         extract(array(
-            'linha_digitavel' => $this->getLinhaDigitavel(),
+            'linha_digitavel' => $this->digitavelLinha, //$this->getLinhaDigitavel(),
             'cedente' => $this->getCedente()->getNome(),
             'cedente_cpf_cnpj' => $this->getCedente()->getDocumento(),
             'cedente_endereco1' => $this->getCedente()->getEndereco(),
@@ -1333,7 +1369,7 @@ abstract class BoletoAbstract
         $part4  = $this->getFatorVencimento() . $this->getValorZeroFill();
 
         // Now put everything together.
-        return "$part1 $part2 $part3 $cd $part4";
+        //return "$part1 $part2 $part3 $cd $part4";
     }
 
     /**
@@ -1343,7 +1379,7 @@ abstract class BoletoAbstract
      */
     public function getImagemCodigoDeBarras()
     {
-        $codigo = $this->getNumeroFebraban();
+        $codigo = $this->codigoDeBarras; //$this->getNumeroFebraban();
 
         $barcodes = array('00110', '10001', '01001', '11000', '00101', '10100', '01100', '00011', '10010', '01010');
 
