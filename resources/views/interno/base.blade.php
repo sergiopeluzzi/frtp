@@ -42,7 +42,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="{{ asset('interno/index2.html') }}" class="logo">
+        <a href="#" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>FRTP</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -443,8 +443,27 @@
         {
             if( document.getElementById('qtdPistas.'+nomeElemento).value == null || document.getElementById('qtdPistas.'+nomeElemento).value == 0)
             {
-                document.getElementById('check.'+nomeElemento).checked = false;
-                document.getElementById('totalModalidade.'+nomeElemento).value = null;
+
+                document.getElementById('qtdPistas.'+nomeElemento).value = 1;
+
+                document.getElementById('qtdPistas.'+nomeElemento).focus();
+                 qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
+
+
+                totalModalidade = valor * qtdPistas;
+
+                document.getElementById('totalModalidade.'+nomeElemento).value = parseFloat(totalModalidade).toFixed(2);
+
+
+                final = (parseFloat(total) + parseFloat(totalModalidade)).toFixed(2);
+
+                document.getElementById('total.'+idEvento).value = final;
+
+
+
+
+                //document.getElementById('check.'+nomeElemento).checked = false;
+                //document.getElementById('totalModalidade.'+nomeElemento).value = null;
             }
             else
             {
