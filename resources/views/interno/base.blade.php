@@ -93,7 +93,7 @@
                         <li><a href="#"><i class="fa fa-circle-o"></i> Doc 4</a></li>
                     </ul>
                 </li>
-
+                <li><a href="/"><i class="fa fa-book"></i> <span>Sair</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
