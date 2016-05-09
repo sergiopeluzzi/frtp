@@ -1,32 +1,37 @@
 @extends('app')
 
 @section('content')
-
     <section id="main-slider" class="carousel">
         <div class="carousel-inner">
+
             <div class="item active">
                 <div class="container">
                     <div class="carousel-content">
-                        <h1>Título h1</h1>
-                        <p class="lead">Parágrafo 'lead'<br>Segunda linha paragrafo</p>
+                        <h1 style="color:#1b6d85">.    </h1>
+                        <p style="color:#1b6d85" class="lead">   .</p>
                     </div>
                 </div>
             </div>
             <!--/.item-->
+
             <div class="item">
                 <div class="container">
                     <div class="carousel-content">
-                        <h1>2º Título h1</h1>
-                        <p class="lead">Outro parágrafo 'lead'<br>Outra segunda linha paragrafo</p>
+                        <h1></h1>
+                        <p class="lead">   </p>
                     </div>
                 </div>
             </div>
             <!--/.item-->
+
         </div>
+
         <!--/.carousel-inner-->
+<!--
         <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
-        <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
+        <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a> -->
     </section>
+
     <!--/#main-slider-->
 
     <section id="menu1">
