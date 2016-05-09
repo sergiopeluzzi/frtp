@@ -60,10 +60,11 @@
                                                             <input style="text-align: center;" id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" type="text" value="1" size="4" readonly>
                                                         @endif
                                                         @if( $modalidade['INS_UNICO'] == 'N' )
-                                                            <input type="text" style="text-align: center;" id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" size="4">
+                                                            <input type="text" style="text-align: center;" onclick="teste({{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD']}},{{$evento['IDEVENTO']}})" id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" onblur="soma({{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD']}},{{$evento['IDEVENTO']}})" id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" size="4">
                                                         @endif
                                                     </td>
-                                                    <td align="center" width="100"><input type="text" style="text-align: center;" id="totalModalidade.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="totalModalidade.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" readonly></td>
+                                                    <td align="center" width="100">
+                                                        <input type="text" style="text-align: center;" id="totalModalidade.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="totalModalidade.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" readonly></td>
 
                                                     <!-- <td>
                                                         <input type="hidden" id="insert.////$evento['IDEVENTO'].'.'.$modalidade['CODMOD']}}" name="insert.//$evento['IDEVENTO'].'.'.$modalidade['CODMOD']}}">

@@ -446,8 +446,8 @@
 
                 document.getElementById('qtdPistas.'+nomeElemento).value = 1;
 
-                document.getElementById('qtdPistas.'+nomeElemento).focus();
-                 qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
+                //document.getElementById('qtdPistas.'+nomeElemento).focus();
+                qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
 
 
                 totalModalidade = valor * qtdPistas;
@@ -504,6 +504,82 @@
         }
 
     };
+
+    function teste(nomeElemento,idEvento)
+    {
+        if(document.getElementById('qtdPistas.'+nomeElemento).value == '' || document.getElementById('qtdPistas.'+nomeElemento).value == 0)
+        {
+
+        }
+
+        if(document.getElementById('qtdPistas.'+nomeElemento).value > 0)
+        {
+
+            if(document.getElementById('check.'+nomeElemento).checked == false)
+            {
+                document.getElementById('check.'+nomeElemento).checked = true;
+            }
+            else
+            {
+                var totalEventos = document.getElementById('total.'+idEvento).value;
+                var totalModal = document.getElementById('totalModalidade.'+nomeElemento).value;
+
+                var finals = (parseFloat(totalEventos) - parseFloat(totalModal)).toFixed(2);
+
+                document.getElementById('total.'+idEvento).value = finals;
+            }
+
+        }
+
+
+    }
+
+    function soma(nomeElemento,idEvento)
+    {
+        var valor     = document.getElementById('valor.'+nomeElemento).value;
+        var qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
+        var total = 0;
+        var totalModalidade = 0;
+        var final = 0;
+
+        total           += document.getElementById('total.'+idEvento).value;
+
+        if(document.getElementById('check.'+nomeElemento).checked == true)
+        {
+
+            if(document.getElementById('qtdPistas.'+nomeElemento).value == '' || document.getElementById('qtdPistas.'+nomeElemento).value == 0)
+            {
+                document.getElementById('check.'+nomeElemento).checked = false;
+                document.getElementById('totalModalidade.'+nomeElemento).value = null;
+            }
+
+            if(document.getElementById('qtdPistas.'+nomeElemento).value > 0)
+            {
+
+                totalModalidade = valor * qtdPistas;
+                document.getElementById('totalModalidade.'+nomeElemento).value = parseFloat(totalModalidade).toFixed(2);
+
+                final = (parseFloat(total) + parseFloat(totalModalidade)).toFixed(2);
+
+                document.getElementById('total.'+idEvento).value = final;
+            }
+        }
+        else
+        {
+
+            if(document.getElementById('qtdPistas.'+nomeElemento).value > 0)
+            {
+                var tirar = document.getElementById('totalModalidade.' + nomeElemento).value;
+
+                document.getElementById('totalModalidade.' + nomeElemento).value = null;
+                document.getElementById('qtdPistas.' + nomeElemento).value = null;
+
+                final = (parseFloat(total) - parseFloat(tirar)).toFixed(2);
+
+                document.getElementById('total.' + idEvento).value = final;
+            }
+        }
+    }
 </script>
 </body>
 
