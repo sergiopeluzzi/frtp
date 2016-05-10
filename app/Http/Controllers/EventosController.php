@@ -395,8 +395,10 @@ class EventosController extends Controller
         {
             $cidade = DB::select("Select DSCCID,UFCID FROM CIDADES WHERE CODCID = $associado->CODCID");
             $carteira = DB::select("Select CODCART FROM TIPODOC WHERE CODDOC = " .$receber[0]['CODDOC']. "");
-            $instrucao = DB::select("Select INSTRU_BCO, INSTRU_COB, CODEMP FROM CCORRENTE WHERE CTA_CC = " .$receber[0]['CTA_CC']. "");
+            $instrucao = DB::select("Select INSTRU_BCO, INSTRU_COB, CODEMP, AG_CODCEDENTE FROM CCORRENTE WHERE CTA_CC = " .$receber[0]['CTA_CC']. "");
             $dadosCedente = DB::select("Select * FROM EMPRESA WHERE  CODEMP = " .$instrucao[0]->CODEMP. "");
+
+
 
             $seq = DB::select("select SEQDOC from CTARECEBER WHERE DOCTOVND = $id");
             $linhaDigCodBarra = DB::select("select CodBarra,LinhaDig from Sp_Codbarra_Linhadig(".$seq[0]->SEQDOC.")");
@@ -416,7 +418,7 @@ class EventosController extends Controller
                 'sequencial' => $nossoNumero, // Para gerar o nosso número
                 'sacado' => $sacado,
                 'cedente' => $cedente,
-                'agencia' => 3271, // Até 4 dígitos
+                'agencia' => $instrucao[0]->AG_CODCEDENTE, // Até 4 dígitos
                 'carteira' => $carteira[0]->CODCART,
                 'conta' => 370258, // Até 8 dígitos
                 'convenio' => 3197, // 4, 6 ou 7 dígitos
