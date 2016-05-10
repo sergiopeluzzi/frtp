@@ -61,29 +61,34 @@ class EventosController extends Controller
 
             $associado['modalidades'] = $modalidadesDB->where('ANOBASE','=', $anoAtual)->get()->toArray();
 
-        }
+            for($i=0; $i<count($associado['modalidades']); $i++)
+            {
+                for($j=0; $j<count($associado['eventosDisponiveis']); $j++)
+                {
+                    $associado['modalidades'][$i]['IDEVENTO'] = $associado['eventosDisponiveis'][$j]['IDEVENTO'];
 
-        for($i=0; $i<count($associado['modalidades']); $i++)
+                    $modalidadeEvento[] = $associado['modalidades'][$i];
+                }
+            }
+
+            for($k=0; $k<count($modalidadeEvento); $k++)
+            {
+                if($inscricao->where('CODMAT','=', $codAssociado[0]['CODASS'])->where('CODMOD','=', $modalidadeEvento[$k]['CODMOD'])->where('IDEVENTO','=', $modalidadeEvento[$k]['IDEVENTO'])->get()->toArray() )
+                {
+                    $modalidadeEvento[$k]['JAFEZ'] = 'S';
+                }
+                else
+                {
+                    $modalidadeEvento[$k]['JAFEZ'] = 'N';
+                }
+            }
+        }
+        else
         {
-            for($j=0; $j<count($associado['eventosDisponiveis']); $j++)
-            {
-                $associado['modalidades'][$i]['IDEVENTO'] = $associado['eventosDisponiveis'][$j]['IDEVENTO'];
-
-                $modalidadeEvento[] = $associado['modalidades'][$i];
-            }
+         $modalidadeEvento = '';
         }
 
-        for($k=0; $k<count($modalidadeEvento); $k++)
-        {
-            if($inscricao->where('CODMAT','=', $codAssociado[0]['CODASS'])->where('CODMOD','=', $modalidadeEvento[$k]['CODMOD'])->where('IDEVENTO','=', $modalidadeEvento[$k]['IDEVENTO'])->get()->toArray() )
-            {
-                $modalidadeEvento[$k]['JAFEZ'] = 'S';
-            }
-            else
-            {
-                $modalidadeEvento[$k]['JAFEZ'] = 'N';
-            }
-        }
+
 
         $associado['modalidades'] = $modalidadeEvento;
 
