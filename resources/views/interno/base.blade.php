@@ -431,11 +431,15 @@
 <script>
     function participaModalidade(nomeElemento,idEvento)
     {
+
+
         var valor     = document.getElementById('valor.'+nomeElemento).value;
         var qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
         var total = 0;
         var totalModalidade = 0;
         var final = 0;
+
+        var totalModalidadeR = valor * qtdPistas;
 
         total           += document.getElementById('total.'+idEvento).value;
 
@@ -444,36 +448,32 @@
             if( document.getElementById('qtdPistas.'+nomeElemento).value == null || document.getElementById('qtdPistas.'+nomeElemento).value == 0)
             {
 
-                document.getElementById('qtdPistas.'+nomeElemento).value = 1;
+                document.getElementById('qtdPistas.'+nomeElemento).focus();
 
-                //document.getElementById('qtdPistas.'+nomeElemento).focus();
+
+
+                /* document.getElementById('qtdPistas.'+nomeElemento).value = 1;
+
                 qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
-
 
                 totalModalidade = valor * qtdPistas;
 
                 document.getElementById('totalModalidade.'+nomeElemento).value = parseFloat(totalModalidade).toFixed(2);
 
-
                 final = (parseFloat(total) + parseFloat(totalModalidade)).toFixed(2);
 
-                document.getElementById('total.'+idEvento).value = final;
+                document.getElementById('total.'+idEvento).value = final; */
 
-
-
-
-                //document.getElementById('check.'+nomeElemento).checked = false;
-                //document.getElementById('totalModalidade.'+nomeElemento).value = null;
             }
             else
             {
                 totalModalidade = valor * qtdPistas;
+
                 document.getElementById('totalModalidade.'+nomeElemento).value = parseFloat(totalModalidade).toFixed(2);
 
                 final = (parseFloat(total) + parseFloat(totalModalidade)).toFixed(2);
 
                 document.getElementById('total.'+idEvento).value = final;
-
             }
         }
         else
@@ -491,50 +491,23 @@
             }
             else
             {
-                var tirar = document.getElementById('totalModalidade.'+nomeElemento).value;
+                if(document.getElementById('qtdPistas.'+nomeElemento).value > 0)
+                {
+                    var tirar = document.getElementById('totalModalidade.'+nomeElemento).value;
 
-                document.getElementById('totalModalidade.'+nomeElemento).value = null;
-                document.getElementById('qtdPistas.'+nomeElemento).value = null;
+                    document.getElementById('totalModalidade.'+nomeElemento).value = null;
+                    document.getElementById('qtdPistas.'+nomeElemento).value = null;
 
-                final = (parseFloat(total) - parseFloat(tirar)).toFixed(2);
+                    final = (parseFloat(total) - parseFloat(tirar)).toFixed(2);
 
-                document.getElementById('total.'+idEvento).value = final;
-
+                    document.getElementById('total.'+idEvento).value = final;
+                }
             }
         }
 
     };
 
-    function teste(nomeElemento,idEvento)
-    {
-        if(document.getElementById('qtdPistas.'+nomeElemento).value == '' || document.getElementById('qtdPistas.'+nomeElemento).value == 0)
-        {
-
-        }
-
-        if(document.getElementById('qtdPistas.'+nomeElemento).value > 0)
-        {
-
-            if(document.getElementById('check.'+nomeElemento).checked == false)
-            {
-                document.getElementById('check.'+nomeElemento).checked = true;
-            }
-            else
-            {
-                var totalEventos = document.getElementById('total.'+idEvento).value;
-                var totalModal = document.getElementById('totalModalidade.'+nomeElemento).value;
-
-                var finals = (parseFloat(totalEventos) - parseFloat(totalModal)).toFixed(2);
-
-                document.getElementById('total.'+idEvento).value = finals;
-            }
-
-        }
-
-
-    }
-
-    function soma(nomeElemento,idEvento)
+    function somaModalidade(nomeElemento,idEvento)
     {
         var valor     = document.getElementById('valor.'+nomeElemento).value;
         var qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
@@ -542,45 +515,46 @@
         var totalModalidade = 0;
         var final = 0;
 
-        total           += document.getElementById('total.'+idEvento).value;
+        total           = document.getElementById('total.'+idEvento).value;
 
-        if(document.getElementById('check.'+nomeElemento).checked == true)
+        if(qtdPistas > 0)
         {
+            totalModalidade = valor * qtdPistas;
 
-            if(document.getElementById('qtdPistas.'+nomeElemento).value == '' || document.getElementById('qtdPistas.'+nomeElemento).value == 0)
-            {
-                document.getElementById('check.'+nomeElemento).checked = false;
-                document.getElementById('totalModalidade.'+nomeElemento).value = null;
-            }
+            document.getElementById('totalModalidade.'+nomeElemento).value = parseFloat(totalModalidade).toFixed(2);
 
-            if(document.getElementById('qtdPistas.'+nomeElemento).value > 0)
-            {
+            final = (parseFloat(total) + parseFloat(totalModalidade)).toFixed(2);
 
-                totalModalidade = valor * qtdPistas;
-                document.getElementById('totalModalidade.'+nomeElemento).value = parseFloat(totalModalidade).toFixed(2);
+            document.getElementById('total.'+idEvento).value = final;
 
-                final = (parseFloat(total) + parseFloat(totalModalidade)).toFixed(2);
-
-                document.getElementById('total.'+idEvento).value = final;
-            }
         }
         else
         {
+            document.getElementById('check.'+nomeElemento).checked = false;
 
-            if(document.getElementById('qtdPistas.'+nomeElemento).value > 0)
-            {
-                var tirar = document.getElementById('totalModalidade.' + nomeElemento).value;
+            document.getElementById('totalModalidade.'+nomeElemento).value = '';
+        }
 
-                document.getElementById('totalModalidade.' + nomeElemento).value = null;
-                document.getElementById('qtdPistas.' + nomeElemento).value = null;
+    }
 
-                final = (parseFloat(total) - parseFloat(tirar)).toFixed(2);
 
-                document.getElementById('total.' + idEvento).value = final;
-            }
+    function verificavazio(nomeElemento,idEvento)
+    {
+        var qtdPistas = document.getElementById('qtdPistas.'+nomeElemento).value;
+
+        if(qtdPistas > 0)
+        {
+
+        }
+        else
+        {
+            document.getElementById('check.'+nomeElemento).checked = false;
+            document.getElementById('totalModalidade.'+nomeElemento).value = '';
         }
     }
+
 </script>
+
 </body>
 
 </html>
