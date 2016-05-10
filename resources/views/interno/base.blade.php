@@ -534,6 +534,14 @@
 
     }
 
+    function marca(nomeElemento,idEvento)
+    {
+        if(document.getElementById('check.'+nomeElemento).checked == false)
+        {
+            document.getElementById('check.'+nomeElemento).checked = true;
+        }
+    }
+
     function tira(nomeElemento,idEvento)
     {
         var totalModal = document.getElementById('totalModalidade.'+nomeElemento).value;

@@ -58,7 +58,7 @@
                                                             <input style="text-align: center;" id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" type="text" value="1" size="4" readonly>
                                                         @endif
                                                         @if( $modalidade['INS_UNICO'] == 'N' )
-                                                                <input type="text" style="text-align: center;" onfocus="tira({{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD']}},{{$evento['IDEVENTO']}})" onchange="somaModalidade({{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD']}},{{$evento['IDEVENTO']}})" id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}"  id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" size="4">
+                                                                <input type="text" style="text-align: center;" onfocus="tira({{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD']}},{{$evento['IDEVENTO']}})" onclick="marca({{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD']}},{{$evento['IDEVENTO']}})" onblur="somaModalidade({{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD']}},{{$evento['IDEVENTO']}})" id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}"  id="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" name="qtdPistas.{{ $evento['IDEVENTO'].'.'.$modalidade['CODMOD'] }}" size="4">
                                                         @endif
                                                     </td>
                                                     <td align="center" width="100">
