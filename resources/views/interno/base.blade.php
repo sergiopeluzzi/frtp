@@ -547,6 +547,8 @@
         var totalModal = document.getElementById('totalModalidade.'+nomeElemento).value;
         var totalEvento = document.getElementById('total.'+idEvento).value;
 
+        document.getElementById('qtdPistas.'+nomeElemento).value = null;
+        document.getElementById('totalModalidade.'+nomeElemento).value = 0;
         document.getElementById('total.'+idEvento).value = totalEvento - totalModal;
     }
 
