@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('contents'); ?>
     <?php echo $__env->make('toast::messages-jquery', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <section id="login_formRecupera">
         <div class="container">

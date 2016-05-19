@@ -94,7 +94,7 @@ class LoginController extends Controller
         else
         {
             Toast::error('Usuário e Senha Inválidos!');
-            return Redirect::to('login');
+            return view('index');
         }
     }
 

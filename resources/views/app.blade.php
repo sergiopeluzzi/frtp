@@ -329,7 +329,7 @@
                 NOME:{
                     required: true
                 },
-                IDUSER:{
+                IDUSU:{
                     required: true
                 },
                 NOM_USER:{
