@@ -1,147 +1,258 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<!--
+	Escape Velocity by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>FRTP | Federação Rondoniense de Tiro Prático</title>
-    <link href="{{asset('site/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('site/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('site/css/prettyPhoto.css')}}" rel="stylesheet">
-    <link href="{{asset('site/css/main.css')}}" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="{{asset('site/js/html5shiv.js')}}"></script>
-    <script src="{{asset('site/js/respond.min.js')}}"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="{{asset('site/images/ico/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="{{asset('site/images/ico/apple-touch-icon-144-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="{{asset('site/images/ico/apple-touch-icon-114-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="{{asset('site/images/ico/apple-touch-icon-72-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset('site/images/ico/apple-touch-icon-57-precomposed.png')}}">
+    <title>FRTP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{asset('site/assets/js/ie/html5shiv.js')}}"></script><![endif]-->
+    <link rel="stylesheet" href="{{asset('site/assets/css/main.css')}}" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="{{asset('site/assets/css/ie8.css')}}" /><![endif]-->
+
 </head>
-<!--/head-->
+<body class="homepage">
+<div id="page-wrapper">
 
-<body data-spy="scroll" data-target="#navbar" data-offset="0">
-<header>
-    <div class="container">
-        <div class="navbar">
-            <ul class="nav navbar-nav pull-right">
-                <li><a class="btn btn-lg text-success" href="{{ route('login.index') }}"><i class="glyphicon glyphicon-lock"></i> Acesso Restrito</a></li>
-                <!--<li><a class="btn btn-lg text-success" href="{{ route('interno.associados.create') }}"><i class="glyphicon glyphicon-hand-down"></i> Filie-se</a></li>-->
-            </ul>
-        </div>
-        <div id="navbar" class="navbar navbar-default">
-            <div class="navbar-header navbar-collapse">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <h1 align="center" class="navbar-collapse"><a href="{{ route('index') }}">FRTP</a></h1>
-                <!--<a class="navbar-brand" href="/"></a>-->
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#"><i class="icon-home"></i></a></li>
-                    <li><a href="#">A LIGA</a></li>
-                    <li><a href="{{ route('associados.index') }}">FILIADOS</a></li>
-                    <li><a href="#">MODALIDADES</a></li>
+<div style="width: auto; background: #001f3f; color: #FFFFFF;">
+        @yield('content')
+</div>
+    <!-- Header -->
+    <div id="header-wrapper" class="wrapper">
+
+        <div id="header">
+            <!-- Logo -->
+
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li class="current"><a href="/">Home</a></li>
+                    <!--
+                    <li>
+                        <a href="#">EVENTOS</a>
+                        <ul>
+                            <li><a href="#">Lorem ipsum</a></li>
+                            <li><a href="#">Magna veroeros</a></li>
+                            <li><a href="#">Etiam nisl</a></li>
+                            <li>
+                                <a href="#">Sed consequat</a>
+                                <ul>
+                                    <li><a href="#">Lorem dolor</a></li>
+                                    <li><a href="#">Amet consequat</a></li>
+                                    <li><a href="#">Magna phasellus</a></li>
+                                    <li><a href="#">Etiam nisl</a></li>
+                                    <li><a href="#">Sed feugiat</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Nisl tempus</a></li>
+                        </ul>
+                    </li>
+                    -->
                     <li><a href="#">ÁREA TÉCNICA</a></li>
-                    <li><a href="#">COMPETIÇÕES</a></li>
-                    <li><a href="#">CONTATO</a></li>
-                </ul>
+                    <li><a href="#">FILIADOS</a></li>
+                    <li><a href="#">EVENTOS</a></li>
+                    <li><a href="#">MODALIDADES</a></li>
+                    <li><a href="#footer">CONTATO</a></li>
+                    <li><a href="#login-wrapper">LOGIN</a></li>
 
-            </div>
+                </ul>
+            </nav>
 
         </div>
     </div>
-</header>
-<!--/#header-->
 
-@yield('content')
+    <!-- Intro -->
 
-<footer id="footer" style="background-color: #666666">
-    <div class="container">
+    <!-- Footer -->
+    <div id="footer-wrapper" class="wrapper">
+
+        <div id="footer" class="container">
+
+            <div class="row 150%">
+                <div class="6u 12u(mobile)">
+
+                    <!-- Contact Form -->
+                    <section>
+                        <form method="post" action="#">
+                            <div class="row 50%">
+                                <div class="6u 12u(mobile)">
+                                    <input type="text" name="name" id="contact-name" placeholder="Nome" />
+                                </div>
+                                <div class="6u 12u(mobile)">
+                                    <input type="text" name="email" id="contact-email" placeholder="Email" />
+                                </div>
+                            </div>
+                            <div class="row 50%">
+                                <div class="12u">
+                                    <textarea name="message" id="contact-message" placeholder="Mensagem" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="12u">
+                                    <ul class="actions">
+                                        <li><input type="submit" class="style1" value="Enviar" disabled/></li>
+                                        <li><input type="reset" class="style2" value="Limpar" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+
+                </div>
+                <div class="6u 12u(mobile)">
+
+                    <!-- Contact -->
+                    <section class="feature-list small">
+                        <div class="row">
+                            <div class="6u 12u(mobile)">
+                                <section>
+                                    <h3 class="icon fa-home">Endereço</h3>
+                                    <p>
+                                        rua tal<br />
+                                        n° 1234<br />
+                                        bairro, cep 00000-000
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="6u 12u(mobile)">
+                                <section>
+                                    <h3 class="icon fa-comment">Redes Sociais</h3>
+                                    <p>
+                                        <a href="#">face</a><br />
+                                        <a href="#">insta</a><br />
+                                        <a href="#">outros</a>
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="6u 12u(mobile)">
+                                <section>
+                                    <h3 class="icon fa-envelope">Email</h3>
+                                    <p>
+                                        <a href="#">email@frtp.org.br</a>
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="6u 12u(mobile)">
+                                <section>
+                                    <h3 class="icon fa-phone">Telefone</h3>
+                                    <p>
+                                        (00) 0000-0000
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="popupRecuperarSenha" class="popupRecupera">
+        <p class="lead" align="center" style="font-size: x-large;">Recuperar Senha</p>
+        {!! Form::open(['route' => 'login.montaEmailRecuperaSenha', 'method' => 'post', 'id' => 'loginRecupera']) !!}
         <div class="row">
-            <div class="col-sm-3">
-                <h2>A liga</h2>
-                <ul>
-                    <li><a href="#">Histórico</a></li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h2>Filiados</h2>
-                <ul>
-                    <li><a href="#">Histórico</a></li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h2>Modalidades</h2>
-                <ul>
-                    <li><a href="#">Histórico</a></li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h2>Competições</h2>
-                <ul>
-                    <li><a href="#">Histórico</a></li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                    <li>Estatuto</li>
-                    <li>Diretoria Executiva</li>
-                    <li>Administração</li>
-                    <li>Fiscalização</li>
-                </ul>
+            <legend class="form-group text-info">Informe o CPF cadastrado.</legend>
+        </div>
+        <div class="row">
+            <div class="8u">
+                {!! Form::label('IDUSU', 'CPF:') !!}
+                {!! Form::text('IDUSU', '') !!}
             </div>
         </div>
+        <br />
+        <div class="pull-left">
+            <button type='submit' class="button style3"></i> Recuperar</button>
+            <a href="#" onclick="fecharRecuperarSenha()" class="button style3">Sair</a>
+        </div>
+        {!! Form::close() !!}
     </div>
-</footer>
-<!--/#footer-->
 
-<script src="{{asset('site/js/jquery.js')}}"></script>
-<script src="{{asset('site/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('site/js/jquery.isotope.min.js')}}"></script>
-<script src="{{asset('site/js/jquery.prettyPhoto.js')}}"></script>
-<script src="{{asset('site/js/main.js')}}"></script>
+    <div id="popupFazerCadastro" class="popupCadastro">
+        <p class="lead" align="center" style="font-size: x-large;">Formulário de Cadastro de Usuários</p>
+        {!! Form::open(['route' => 'login.store', 'method' => 'post', 'id' => 'loginCadastro']) !!}
+        <div class="row">
+            <div class="12u">
+                {!! Form::label('NOME', 'Nome:') !!}
+                {!! Form::text('NOME', '', ['onChange' => 'this.value = this.value.toUpperCase()']) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="6u">
+                {!! Form::label('IDUSER', 'CPF:') !!}
+                {!! Form::text('IDUSER', '') !!}
+            </div>
+            <div class="6u">
+                {!! Form::label('NOM_USER', 'Usuário:') !!}
+                {!! Form::text('NOM_USER', '', ['onChange' => 'this.value = this.value.toUpperCase()']) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="6u">
+                {!! Form::label('SENHA', 'Senha:') !!}
+                {!! Form::password('SENHA', '') !!}
+            </div>
+            <div class="6u">
+                {!! Form::label('SENHA2', 'Senha:') !!}
+                {!! Form::password('SENHA2', '') !!}
+            </div>
+        </div>
+        <br />
+        <div class="pull-left">
+            <button type='submit' class="button style3"></i> Salvar</button>
+            <a href="#" onclick="fecharFazerCadastro();" class="button style3">Sair</a>
+        </div>
+
+        {!! Form::close() !!}
+
+    </div>
+    <!--/.center-->
+    <div id="login-wrapper" class="wrapper style1">
+        <div id="login" class="container">
+            @include('toast::messages-jquery')
+            <div class="title">EFETUAR LOGIN</div>
+
+            {!! Form::open(['route' => 'login.valida', 'method' => 'post']) !!}
+            <div class="row">
+                <div class="4u">
+                    <h3 class="text-info">Usuário:</h3>
+                    {!! Form::text('NOM_USER', '', ['onChange' => 'this.value = this.value.toUpperCase()']) !!}
+                </div>
+                <div class="4u">
+                    <h3 class="text-info">Senha:</h3>
+                    {!! Form::password('SENHA','') !!}
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="pull-left">
+                    <button type='submit' class="button style3"></i> Entrar</button>
+                    <a href="#" onclick="abrirRecuperarSenha()" class="button style3">Recuperar Senha</a>
+                    <a href="#" onclick="abrirFazerCadastro()" class="button style3">Fazer Cadastro</a>
+                </div>
+            </div>
+            {!! Form::close() !!}
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+
+<script src="{{asset('site/assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('site/assets/js/jquery.dropotron.min.js')}}"></script>
+<script src="{{asset('site/assets/js/skel.min.js')}}"></script>
+<script src="{{asset('site/assets/js/skel-viewport.min.js')}}"></script>
+<script src="{{asset('site/assets/js/util.js')}}"></script>
+<!--[if lte IE 8]><script src="{{asset('site/assets/js/ie/respond.min.js')}}"></script><![endif]-->
+<script src="{{asset('site/assets/js/main.js')}}"></script>
 
 
 
@@ -156,18 +267,87 @@
 <link rel="stylesheet" type="text/css" href="{{asset('interno/dist/css/estilo.css')}}" />
 
 
+<script type="text/javascript">
+    function fecharFazerCadastro(){
+        document.getElementById('popupFazerCadastro').style.display = 'none';
+    }
+
+    function fecharRecuperarSenha(){
+        document.getElementById('popupRecuperarSenha').style.display = 'none';
+    }
+
+    function abrirRecuperarSenha(){
+        document.getElementById('popupRecuperarSenha').style.display = 'block';
+        //setTimeout ("fechar()", 3000);
+    }
+
+    function abrirFazerCadastro(){
+        document.getElementById('popupFazerCadastro').style.display = 'block';
+        //setTimeout ("fechar()", 3000);
+    }
+</script>
+
 <!-- Script que vai adicionar as máscaras nos campos -->
 <script type="text/javascript">
     jQuery(function($){
         //defina as máscaras de seus campos, o 9 indica um caracter numérico qualquer
         $("#IDUSER").mask("999.999.999-99");
+        $("#IDUSU").mask("999.999.999-99");
     });
 </script>
 
 <script type="text/javascript">
     $(document).ready( function() {
         //Inicio das regras de validação
-        $("#login").validate({
+        $("#loginCadastro").validate({
+            // Define as regras
+            rules:{
+                NOME:{
+                    required: true
+                },
+                IDUSER:{
+                    required: true
+                },
+                NOM_USER:{
+                    required: true
+                },
+                SENHA:{
+                    required: true
+                },
+                SENHA2:{
+                    required: true
+                }
+            },
+        });
+    });
+
+    $(document).ready( function() {
+        //Inicio das regras de validação
+        $("#loginRecupera").validate({
+            // Define as regras
+            rules:{
+                NOME:{
+                    required: true
+                },
+                IDUSER:{
+                    required: true
+                },
+                NOM_USER:{
+                    required: true
+                },
+                SENHA:{
+                    required: true
+                },
+                SENHA2:{
+                    required: true
+                }
+            },
+        });
+    });
+
+    $(document).ready( function() {
+        //Inicio das regras de validação
+        $("#loginAlteraSenha").validate({
             // Define as regras
             rules:{
                 NOME:{
@@ -191,22 +371,22 @@
 
 </script>
 
-    <script>
-        var password = document.getElementById("SENHA"), confirm_password = document.getElementById("SENHA2");
-        function validatePassword(){
-            if(password.value != confirm_password.value)
-            {
+<script>
+    var password = document.getElementById("SENHA"), confirm_password = document.getElementById("SENHA2");
+    function validatePassword(){
+        if(password.value != confirm_password.value)
+        {
 
-                confirm_password.setCustomValidity("As Senhas devem ser Iguais!");
-            }
-            else
-            {
-                confirm_password.setCustomValidity('');
-            }
+            confirm_password.setCustomValidity("As Senhas devem ser Iguais!");
         }
-        password.onchange = validatePassword;
-        confirm_password.onkeyup = validatePassword;
-    </script>
+        else
+        {
+            confirm_password.setCustomValidity('');
+        }
+    }
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
 
 </body>
-</html>	
+</html>

@@ -1,0 +1,44 @@
+<!-- Inicio Dados Cadastrais -->
+<div class="row">
+    <legend class="form-group text-info">Dados Cadastrais</legend>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-12">
+        <?php echo Form::label('NOME', 'Nome:'); ?>
+
+        <?php echo Form::text('NOME', '', ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-6">
+        <?php echo Form::label('IDUSER', 'CPF:'); ?>
+
+        <?php echo Form::text('IDUSER', '', ['class' => 'form-control']); ?>
+
+    </div>
+    <div class="form-group col-md-6">
+        <?php echo Form::label('NOM_USER', 'Usuário:'); ?>
+
+        <?php echo Form::text('NOM_USER', '', ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-6">
+        <?php echo Form::label('SENHA', 'Senha:'); ?>
+
+        <?php echo Form::password('SENHA', ['class' => 'form-control']); ?>
+
+    </div>
+    <div class="form-group col-md-6">
+        <?php echo Form::label('SENHA2', 'Confirma Senha:'); ?>
+
+        <?php echo Form::password('SENHA2', ['class' => 'form-control']); ?>
+
+    </div>
+</div>
+<div class="pull-left">
+    <button type='submit' class="btn btn-lg btn-success"><i class="glyphicon glyphicon-ok"></i> Salvar</button>
+</div>

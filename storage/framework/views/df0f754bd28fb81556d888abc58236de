@@ -1,0 +1,7 @@
+<!-- Inicio Dados Cadastrais -->
+<div class="row">
+    <h3>Sr(a). <?php echo e($nome); ?>, recebemos uma solicitação para alteração de senha do CPF: <?php echo e($cpf); ?>.<br> Para redefinir sua senha clique no link abaixo:</h3>
+
+    <a href="http://frtp.org.br/frtp/public/login/recuperaSenha?id=<?php echo e($cpf); ?>">Clique aqui para redefinir!</a>
+
+</div>

@@ -1,0 +1,109 @@
+
+
+<?php $__env->startSection('conteudo'); ?>
+    <?php echo $__env->make('toast::messages-jquery', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php if( isset($eventosDisponiveis) ): ?>
+        <h2 class="page-header">Eventos</h2>
+        <div class="row">
+            <div class="box-body">
+                <div class="box-group" id="accordion">
+                    <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                    <?php foreach($eventosDisponiveis as $evento): ?>
+                        <div class="panel box box-success">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo e($evento['IDEVENTO']); ?>">
+                                        <?php echo e($evento['NOME_EVENTO']); ?> &nbsp;&nbsp;&nbsp;&nbsp;Data: <?php echo e($evento['DATA_EVENTO']); ?>
+
+                                    </a>
+                                </h4>
+                            </div>
+                            <div style="width: 750px;" id="<?php echo e($evento['IDEVENTO']); ?>" class="panel-collapse collapse">
+                                <div class="box-body">
+                                    Período de Inscrição: <?php echo e(Carbon\Carbon::createFromFormat('Y-m-d', $evento['DAT_INI'])->format('d/m/Y')); ?> à <?php echo e(Carbon\Carbon::createFromFormat('Y-m-d', $evento['DAT_FIM'])->format('d/m/Y')); ?>
+
+                                    <br /><br />
+
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr >
+                                                <th ></th>
+                                                <th style="text-align: center;">MODALIDADES DO EVENTO</th>
+                                                <th style="text-align: center;">VALOR</th>
+                                                <th style="text-align: center;">INSCRIÇÃO(ÕES)</th>
+                                                <th style="text-align: center;">TOTAL MODALIDADE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php foreach($modalidades as $modalidade): ?>
+                                            <?php if($modalidade['IDEVENTO'] == $evento['IDEVENTO']): ?>
+                                                <tr>
+                                                    <?php echo Form::open(['route' => 'interno.eventos.efetuarInscricao', 'id' => 'associados']); ?>
+
+
+                                                    <?php if($modalidade['JAFEZ'] == 'S' && $modalidade['INS_UNICO'] == 'S'): ?>
+                                                        <td width="10">
+                                                            <input title="VOCÊ JÁ ESTA INSCRITO!" value="<?php echo e($modalidade['CODMOD']); ?>" onchange="participaModalidade(<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>,<?php echo e($evento['IDEVENTO']); ?>)" type="checkbox" id="check.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" name="check.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" class="minimal-red" disabled>
+                                                        </td>
+                                                    <?php else: ?>
+                                                        <td width="10">
+                                                            <input value="<?php echo e($modalidade['CODMOD']); ?>" onchange="participaModalidade(<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>,<?php echo e($evento['IDEVENTO']); ?>)" type="checkbox" id="check.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" name="check.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" class="minimal-red">
+                                                        </td>
+                                                    <?php endif; ?>
+                                                    <td width="350"><?php echo e($modalidade['DSCMOD']); ?></td>
+                                                    <td align="center" width="50">
+                                                        <input type="text" style="text-align: center;" id="valor.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" name="valor.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" value="<?php echo e($modalidade['VALOR']); ?>" size="10" readonly>
+                                                        <input type="hidden" style="text-align: center;" id="codEvento.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" name="codEvento.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" value="<?php echo e($evento['IDEVENTO']); ?>" size="10" readonly>
+                                                        <input type="hidden" style="text-align: center;" id="codcc.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" name="codcc.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" value="<?php echo e($evento['CODCC']); ?>" size="10" readonly>
+                                                    </td>
+                                                    <td align="center" width="100">
+                                                        <?php if( $modalidade['INS_UNICO'] == 'S' ): ?>
+                                                            <input style="text-align: center;" id="qtdPistas.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" name="qtdPistas.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" type="text" value="1" size="4" readonly>
+                                                        <?php endif; ?>
+                                                        <?php if( $modalidade['INS_UNICO'] == 'N' ): ?>
+                                                                <input type="text" style="text-align: center;" onfocus="tira(<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>,<?php echo e($evento['IDEVENTO']); ?>)" onclick="marca(<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>,<?php echo e($evento['IDEVENTO']); ?>)" onblur="somaModalidade(<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>,<?php echo e($evento['IDEVENTO']); ?>)" id="qtdPistas.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>"  id="qtdPistas.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" name="qtdPistas.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" size="4">
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td align="center" width="100">
+                                                        <input type="text" style="text-align: center;" id="totalModalidade.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" name="totalModalidade.<?php echo e($evento['IDEVENTO'].'.'.$modalidade['CODMOD']); ?>" readonly>
+                                                    </td>
+
+                                                    <!-- <td>
+                                                        <input type="hidden" id="insert.////$evento['IDEVENTO'].'.'.$modalidade['CODMOD']}}" name="insert.//$evento['IDEVENTO'].'.'.$modalidade['CODMOD']}}">
+                                                    </td> -->
+
+
+                                                </tr>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                            <tr>
+                                                <td colspan="4" align="right">TOTAL DA INSCRIÇÃO &nbsp;&nbsp;&nbsp;</td>
+                                                <td align="center"><input type="text" style="text-align: center;" id="total.<?php echo e($evento['IDEVENTO']); ?>" name="total.<?php echo e($evento['IDEVENTO']); ?>" readonly></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5" align="center">
+                                                    <button type='submit' class="btn btn-lg btn-success"><i class="glyphicon glyphicon-ok"></i> Realizar Inscrição</button>
+                                                </td>
+                                            </tr>
+                                        <?php echo Form::close(); ?>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.row -->
+    <?php else: ?>
+        <section class="content-header">
+            <h1>Eventos</h1>
+            <br>
+        </section>
+
+        <div class="containers">
+            <h4 style="color:red"> Não existem Eventos disponiveis para Inscrição. Por favor consulte o calendário da Federação.</h4>
+        </div>
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('interno.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

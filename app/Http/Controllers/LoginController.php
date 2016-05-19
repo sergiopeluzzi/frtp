@@ -111,7 +111,7 @@ class LoginController extends Controller
 
         $registroAssociados = new Associado();
 
-        $userSelecionado = $registroUsuarios->where('IDUSER', $cpf["IDUSER"])->get()->toArray();
+        $userSelecionado = $registroUsuarios->where('IDUSER', $cpf["IDUSU"])->get()->toArray();
 
         if( $userSelecionado == NULL )
         {
@@ -120,7 +120,7 @@ class LoginController extends Controller
         }
         else
         {
-            $associadoSelecionado = $registroAssociados->where('CPF', $cpf["IDUSER"])->get()->toArray();
+            $associadoSelecionado = $registroAssociados->where('CPF', $cpf["IDUSU"])->get()->toArray();
 
             $emailAssociado = $associadoSelecionado[0]['EMAIL'];
 
@@ -169,7 +169,7 @@ class LoginController extends Controller
 
             Toast::success('Senha alterada com Sucesso!');
 
-            return view('login.index');
+            return view('index');
         }
     }
 }

@@ -1,0 +1,55 @@
+
+
+<?php $__env->startSection('content'); ?>
+
+    <section id="login_formRecupera">
+        <div class="container">
+            <?php echo $__env->make('toast::messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <div class="box">
+                <div class="center">
+                    <!-- <h2 class="text-info">Associados</h2> -->
+                    <p class="lead" style="font-size: large;">Redefinir Senha</p>
+                </div>
+                <!--/.center-->
+
+                <?php echo Form::open(['route' => 'login.alteraSenha', 'method' => 'post', 'id' => 'loginAlteraSenha']); ?>
+
+
+                <div class="row">
+                    <legend class="form-group text-info">Cadastre a nova Senha.</legend>
+                </div>
+                <div class="row">
+                    <div class="4u">
+                        <?php echo Form::label('SENHA', 'Senha:'); ?>
+
+                        <?php echo Form::password('SENHA', ['class' => 'form-control']); ?>
+
+                    </div>
+                    <div class="4u">
+                        <?php echo Form::label('SENHA2', 'Confirma Senha:'); ?>
+
+                        <?php echo Form::password('SENHA2', ['class' => 'form-control']); ?>
+
+                    </div>
+
+                    <div>
+                        <?php echo Form::hidden('IDUSER', $_GET['id']); ?>
+
+                    </div>
+                </div>
+                <br>
+                <div class="4u">
+                    <button type='submit' class="button style1"></i> Alterar</button>
+                </div>
+<br>
+                <?php echo Form::close(); ?>
+
+
+            </div>
+        </div>
+
+    </section>
+    <!--/#login_create-->
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

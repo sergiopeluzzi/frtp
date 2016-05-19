@@ -1,0 +1,222 @@
+<!-- Inicio Dados Cadastrais -->
+
+<div class="box box-primary" xmlns="http://www.w3.org/1999/html">
+    <!-- form start -->
+    <div class="box-body">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <?php echo Form::label('NOMASS', 'Nome:'); ?>
+
+                <?php echo Form::text('NOMASS', isset($associado->NOMASS) ? $associado->NOMASS : session('NOME'), ['class' => 'form-control', 'readonly', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+            <div class="form-group col-md-2">
+                <?php echo Form::label('SEXO', 'Sexo:'); ?>
+
+                <?php echo Form::select('SEXO', ['M' => 'MASCULINO', 'F' => 'FEMININO'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']); ?>
+
+            </div>
+            <div class="form-group col-md-2">
+                <?php echo Form::label('ECIVIL', 'Estado Civil:'); ?>
+
+                <?php echo Form::select('ECIVIL', ['SOLTEIRO(A)' => 'SOLTEIRO(A)', 'CASADO(A)' => 'CASADO(A)', 'SEPARADO(A)' => 'SEPARADO(A)', 'DIVORCIADO(A)' => 'DIVORCIADO(A)', 'VIÚVO(A)' => 'VIÚVO(A)'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <?php echo Form::label('CPF', 'CPF:'); ?>
+
+                <?php echo Form::text('CPF', isset($associado->CPF) ? $associado->CPF : session('IDUSER'), ['class' => 'form-control', 'readonly']); ?>
+
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('RG', 'RG:'); ?>
+
+                <?php echo Form::text('RG', isset($associado->RG) ? $associado->RG : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('NASCTO', 'Data Nascimento:'); ?>
+
+                <?php echo Form::date('NASCTO', isset($associado->NASCTO) ? $associado->NASCTO : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <?php echo Form::label('ENDERECO', 'Endereço:'); ?>
+
+                <?php echo Form::text('ENDERECO', isset($associado->ENDERECO) ? $associado->ENDERECO : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('BAIRRO', 'Bairro:'); ?>
+
+                <?php echo Form::text('BAIRRO', isset($associado->BAIRRO) ? $associado->BAIRRO : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <?php echo Form::label('CIDADE', 'Cidade - UF:'); ?>
+
+                <select class="form-control select2" id="CODCID" name="CODCID">
+                    <?php if(isset($associado->CPF)): ?>
+                        <?php foreach($cidades as $cidade): ?>
+                            <?php if($associado->CODCID == $cidade->CODCID ): ?>
+                                <option value="<?php echo e($cidade->CODCID); ?>" selected><?php echo e($cidade->DSCCID . ' - ' . $cidade->UFCID); ?></option>
+                            <?php endif; ?>
+                                <option value="<?php echo e($cidade->CODCID); ?>"><?php echo e($cidade->DSCCID . ' - ' . $cidade->UFCID); ?></option>nt
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <?php foreach($cidades as $cidade): ?>
+                            <option value="<?php echo e($cidade->CODCID); ?>"><?php echo e($cidade->DSCCID . ' - ' . $cidade->UFCID); ?></option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('CEP', 'CEP:'); ?>
+
+                <?php echo Form::text('CEP', isset($associado->CEP) ? $associado->CEP : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <?php echo Form::label('FONE', 'Telefone Fixo:'); ?>
+
+                <?php echo Form::text('FONE', isset($associado->FONE) ? $associado->FONE : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('CELULAR', 'Celular:'); ?>
+
+                <?php echo Form::text('CELULAR', isset($associado->CELULAR) ? $associado->CELULAR : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('EMAIL', 'Email:'); ?>
+
+                <?php echo Form::email('EMAIL', isset($associado->EMAIL) ? $associado->EMAIL : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <?php echo Form::label('PROFISSAO', 'Profissão:'); ?>
+
+                <?php echo Form::text('PROFISSAO', isset($associado->PROFISSAO) ? $associado->PROFISSAO : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+            <div class="form-group col-md-6">
+                <?php echo Form::label('NATURALI', 'Nascido em:'); ?>
+
+                <?php echo Form::text('NATURALI', isset($associado->NATURALI) ? $associado->NATURALI : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <?php echo Form::label('PAI', 'Nome do Pai:'); ?>
+
+                <?php echo Form::text('PAI', isset($associado->PAI) ? $associado->PAI : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+            <div class="form-group col-md-6">
+                <?php echo Form::label('MAE', 'Nome da Mãe:'); ?>
+
+                <?php echo Form::text('MAE', isset($associado->MAE) ? $associado->MAE : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+        </div>
+        </br>
+        <legend class="form-group text-info">Dados Comerciais</legend>
+        </br>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <?php echo Form::label('NOME_COM', 'Local de Trabalho:'); ?>
+
+                <?php echo Form::text('NOME_COM', isset($associado->NOME_COM) ? $associado->NOME_COM : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <?php echo Form::label('END_COM', 'Endereço:'); ?>
+
+                <?php echo Form::text('END_COM', isset($associado->END_COM) ? $associado->END_COM : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('BAI_COM', 'Bairro:'); ?>
+
+                <?php echo Form::text('BAI_COM', isset($associado->BAI_COM) ? $associado->BAI_COM : NULL, ['class' => 'form-control', 'onChange' => 'this.value = this.value.toUpperCase()']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <?php echo Form::label('CIDADE', 'Cidade - UF:'); ?>
+
+                <select class="form-control select2" id="CID_COM" name="CID_COM">
+                    <?php if(isset($associado->CPF)): ?>
+
+                        <?php foreach($cidades as $cidade): ?>
+                            <?php if($associado->CID_COM == $cidade->CODCID ): ?>
+                                <option value="<?php echo e($cidade->CODCID); ?>" selected><?php echo e($cidade->DSCCID . ' - ' . $cidade->UFCID); ?></option>
+                            <?php endif; ?>
+                            <option value="<?php echo e($cidade->CODCID); ?>"><?php echo e($cidade->DSCCID . ' - ' . $cidade->UFCID); ?></option>nt
+                        <?php endforeach; ?>
+
+                    <?php else: ?>
+                        <?php foreach($cidades as $cidade): ?>
+                            <option value="<?php echo e($cidade->CODCID); ?>"><?php echo e($cidade->DSCCID . ' - ' . $cidade->UFCID); ?></option>
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('CEP_COM', 'CEP:'); ?>
+
+                <?php echo Form::text('CEP_COM', isset($associado->CEP_COM) ? $associado->CEP_COM : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <?php echo Form::label('FONE_COM', 'Telefone:'); ?>
+
+                <?php echo Form::text('FONE_COM', isset($associado->FONE_COM) ? $associado->FONE_COM : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('FAX_COM', 'Fax:'); ?>
+
+                <?php echo Form::text('FAX_COM', isset($associado->FAX_COM) ? $associado->FAX_COM : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+            <div class="form-group col-md-4">
+                <?php echo Form::label('EMAIL_COM', 'Email:'); ?>
+
+                <?php echo Form::text('EMAIL_COM', isset($associado->EMAIL_COM) ? $associado->EMAIL_COM : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <?php echo Form::label('SITE_COM', 'Site:'); ?>
+
+                <?php echo Form::text('SITE_COM', isset($associado->SITE_COM) ? $associado->SITE_COM : NULL, ['class' => 'form-control']); ?>
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+</div><!-- /.box-body -->
+<!--/#associados_create-->

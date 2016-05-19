@@ -1,0 +1,29 @@
+<?php $__env->startSection('conteudo'); ?>
+    <section class="content-header">
+        <h1>
+            Associado -
+            <small> Formulário de Cadastro do Associado.</small>
+        </h1>
+        <br>
+    </section>
+    <section id="interno_associados_create">
+        <div class="containers">
+            <div class="box">
+
+                <!--/.center-->
+
+                <?php echo Form::open(['route' => 'interno.associados.store', 'id' => 'associados']); ?>
+
+
+                    <?php echo $__env->make('interno.associados.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                <?php echo Form::close(); ?>
+
+
+            </div>
+        </div>
+
+    </section>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('interno.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

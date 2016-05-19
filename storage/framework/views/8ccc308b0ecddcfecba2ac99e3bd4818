@@ -1,0 +1,8 @@
+
+
+<?php $__env->startSection('conteudo'); ?>
+   <?php echo $__env->make('toast::messages-jquery', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+   <p>Bem Vindo a Área restrita.</p>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('interno.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

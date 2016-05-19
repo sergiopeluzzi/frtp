@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('content')
+@section('contents')
     @include('toast::messages-jquery')
     <section id="login_formRecupera">
         <div class="container">
