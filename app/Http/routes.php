@@ -30,6 +30,7 @@ Route::post('/login/salvar', ['as' => 'login.store', 'uses' => 'LoginController@
 Route::post('/login/valida', ['as' => 'login.valida', 'uses' => 'LoginController@validaLogin']);
 Route::get('/login/indexRecuperaSenha', ['as' => 'login.indexRecuperaSenha', 'uses' => 'LoginController@indexRecuperaSenha']);
 Route::post('/login/montaEmailRecuperaSenha', ['as' => 'login.montaEmailRecuperaSenha', 'uses' => 'LoginController@montaEmailRecuperaSenha']);
+Route::post('/login/montaEmailContato', ['as' => 'login.montaEmailContato', 'uses' => 'LoginController@montaEmailContato']);
 Route::get('/login/recuperaSenha', ['as' => 'login.recuperaSenha', 'uses' => 'LoginController@recuperaSenha']);
 Route::post('/login/alteraSenha', ['as' => 'login.alteraSenha', 'uses' => 'LoginController@alteraSenha']);
 

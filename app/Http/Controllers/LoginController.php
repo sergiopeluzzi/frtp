@@ -172,5 +172,26 @@ class LoginController extends Controller
             return view('index');
         }
     }
+
+    public function montaEmailContato(Request $request)
+    {
+        $dadosForm = $request->all();
+
+        $data = array();
+
+        $data['NOME'] = $dadosForm['NOME'];
+        $data['EMAIL'] = $dadosForm['EMAIL'];
+        $data['MENSAGEM'] = $dadosForm['MESSAGE'];
+
+        Mail::send('login.emailContato', $data, function ($m)
+        {
+            $m->from('contato@frtp.org.br', 'Contato feito pelo site da FRTP - Federação Rondoniense de Tiro Prático');
+            $m->to('adm.frtp@gmail.com')
+                ->subject('Contato Site');
+        });
+
+        Toast::success('Contato efetuado. Obrigado!');
+        return view('index');
+    }
 }
 	
