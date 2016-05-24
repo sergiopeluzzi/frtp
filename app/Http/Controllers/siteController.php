@@ -4,6 +4,7 @@ namespace frtp\Http\Controllers;
 
 use Carbon\Carbon;
 use frtp\Models\Eventos;
+use frtp\Models\Modalidades;
 use Illuminate\Http\Request;
 
 use frtp\Http\Requests;
@@ -20,6 +21,8 @@ class siteController extends Controller
     {
         $eventosDB = new Eventos();
 
+        $modalidadesDB = new Modalidades();
+
         $dataAtual = Carbon::now()->format('Y-m-d');
 
         if ( $eventosDB->where('DAT_INI','<=', $dataAtual)->where('DAT_FIM','>=', $dataAtual)->get()->toArray() )
@@ -34,8 +37,11 @@ class siteController extends Controller
             $eventosDisponiveis['eventosDisponiveis'] = null;
         }
 
+        $eventosDisponiveis['modalidadesDisponiveis'] = $modalidadesDB->where('ANOBASE','=', $anoAtual)->get()->toArray();
 
-            return view('index')->with($eventosDisponiveis);
+        $eventosDisponiveis['modalidadesDisponiveis'];
+
+        return view('index')->with($eventosDisponiveis);
     }
 
     /**

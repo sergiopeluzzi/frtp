@@ -25,7 +25,7 @@
                             <li><a href="#">ÁREA TÉCNICA</a></li>
                             <li><a href="#">FILIADOS</a></li>
                             <li><a href="#eventos-wrapper">EVENTOS</a></li>
-                            <li><a href="#">MODALIDADES</a></li>
+                            <li><a href="#modalidades-wrapper">MODALIDADES</a></li>
                             <li><a href="#footer">CONTATO</a></li>
                             <li><a href="#login-wrapper">LOGIN</a></li>
                         </ul>
@@ -54,9 +54,33 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <strong>Não EXISTEM EVENTOS DÍSPONIVELS PARA INSCRIÇÃO.</strong>
+                                    <strong>Não EXISTEM EVENTOS DISPONÍVEIS PARA INSCRIÇÃO.</strong>
                                 @endif
                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div id="modalidades-wrapper" class="wrapper style1">
+                <div class="title">MODALIDADES</div>
+                <div id="main" class="container">
+                    <!-- Features -->
+                    <section id="features">
+                        <div class="feature-list">
+                            <div class="row">
+                                @if( isset($modalidadesDisponiveis) )
+                                    @foreach($modalidadesDisponiveis as $modalidades)
+                                        <div class="6u 12u(mobile)">
+                                            <section>
+                                                <li>{{ $modalidades['DSCMOD'] }}</li></p>
+                                            </section>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <strong>NÃO EXISTEM MODALIDADES DISPONÍVEIS.</strong>
+                                @endif
+                            </div>
                         </div>
                     </section>
                 </div>
