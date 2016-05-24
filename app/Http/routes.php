@@ -12,10 +12,7 @@ use frtp\Models\User;
 |
 */
 
-Route::get('/', ['as' => 'index', function() {
-    return view('index');
-}]);
-
+Route::get('/', ['as' => 'index', 'uses' => 'siteController@index']);
 
 
 Route::get('/associados', ['as' => 'associados.index', 'uses' => 'AssociadosController@index']);

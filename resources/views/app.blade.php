@@ -15,7 +15,6 @@
     </head>
     <body class="homepage">
         <div id="page-wrapper">
-
             <div style="width: auto; background: #001f3f; color: #FFFFFF;">@yield('content')</div>
             <!-- Header -->
             <div id="header-wrapper" class="wrapper">
@@ -25,7 +24,7 @@
                             <li class="current"><a href="/">Home</a></li>
                             <li><a href="#">ÁREA TÉCNICA</a></li>
                             <li><a href="#">FILIADOS</a></li>
-                            <li><a href="#">EVENTOS</a></li>
+                            <li><a href="#eventos-wrapper">EVENTOS</a></li>
                             <li><a href="#">MODALIDADES</a></li>
                             <li><a href="#footer">CONTATO</a></li>
                             <li><a href="#login-wrapper">LOGIN</a></li>
@@ -33,9 +32,31 @@
                     </nav>
                 </div>
             </div>
+            <div id="eventos-wrapper" class="wrapper style1">
+
+                <section id="intro" class="container">
+                    <p class="style2">Eventos</p>
+                    <p class="style3">
+                        @if( isset($eventosDisponiveis) )
+                            @foreach($eventosDisponiveis as $evento)
+                                <p align="left">
+                                    <strong>{{ $evento['NOME_EVENTO'] }}</strong> -
+                                    Data: {{ $evento['DATA_EVENTO'] }}
+                                    <br />
+                                    Período de Inscrição: {{ Carbon\Carbon::createFromFormat('Y-m-d', $evento['DAT_INI'])->format('d/m/Y') }} à {{ Carbon\Carbon::createFromFormat('Y-m-d', $evento['DAT_FIM'])->format('d/m/Y') }}
+                                    <br />
+                                    <a href="#login-wrapper" align="left" class="button style3 big">Inscrever-se</a>
+                                </p>
+                            @endforeach
+                        @else
+                            <strong>Não existem Eventos em abertos.</strong>
+                        @endif
+                </section>
+            </div>
 
             <div id="footer-wrapper" class="wrapper">
                 <div id="footer" class="container">
+                    <div class="title">CONTATO</div>
                     <div class="row 150%">
                         <div class="6u 12u(mobile)">
                             <!-- Contact Form -->

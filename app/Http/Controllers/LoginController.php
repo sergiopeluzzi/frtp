@@ -42,20 +42,20 @@ class LoginController extends Controller
         if( ($usuarios->where('NOM_USER', $dadosForm["NOM_USER"])->get()->toArray()) )
         {
             Toast::error('Usuário já cadastrado, por favor informe outro Usuário');
-            return view('login.create');
+            return view('index');
         }
 
         if( ($usuarios->where('IDUSER', $dadosForm["IDUSER"])->get()->toArray()) )
         {
             Toast::error('CPF já cadastrado, por favor informe outro CPF');
-            return view('login.create');
+            return view('index');
         }
         else
         {
             $usuarios->create($dadosForm);
 
             Toast::success('Usuário cadastrador com Sucesso!');
-            return view('login.index');
+            return view('index');
         }
     }
 
@@ -141,7 +141,7 @@ class LoginController extends Controller
 
 
             Toast::success($msg);
-            return view('login.index');
+            return view('index');
         }
 
     }
