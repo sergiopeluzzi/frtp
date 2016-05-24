@@ -32,26 +32,34 @@
                     </nav>
                 </div>
             </div>
-            <div id="eventos-wrapper" class="wrapper style1">
 
-                <section id="intro" class="container">
-                    <p class="style2">Eventos</p>
-                    <p class="style3">
-                        @if( isset($eventosDisponiveis) )
-                            @foreach($eventosDisponiveis as $evento)
-                                <p align="left">
-                                    <strong>{{ $evento['NOME_EVENTO'] }}</strong> -
-                                    Data: {{ $evento['DATA_EVENTO'] }}
-                                    <br />
-                                    Período de Inscrição: {{ Carbon\Carbon::createFromFormat('Y-m-d', $evento['DAT_INI'])->format('d/m/Y') }} à {{ Carbon\Carbon::createFromFormat('Y-m-d', $evento['DAT_FIM'])->format('d/m/Y') }}
-                                    <br />
-                                    <a href="#login-wrapper" align="left" class="button style3 big">Inscrever-se</a>
-                                </p>
-                            @endforeach
-                        @else
-                            <strong>Não existem Eventos em abertos.</strong>
-                        @endif
-                </section>
+            <div id="eventos-wrapper" class="wrapper style2">
+                <div id="main" class="container">
+                    <!-- Features -->
+                    <section id="features">
+                        <header class="style1">
+                            <h2>Eventos</h2>
+                        </header>
+                        <div class="feature-list">
+                            <div class="row">
+                                @if( isset($eventosDisponiveis) )
+                                    @foreach($eventosDisponiveis as $evento)
+                                        <div class="6u 12u(mobile)">
+                                            <section>
+                                                <h3>{{ $evento['NOME_EVENTO'] }}</h3>
+                                                Data: {{ $evento['DATA_EVENTO'] }}
+                                                Período de Inscrição: {{ Carbon\Carbon::createFromFormat('Y-m-d', $evento['DAT_INI'])->format('d/m/Y') }} à {{ Carbon\Carbon::createFromFormat('Y-m-d', $evento['DAT_FIM'])->format('d/m/Y') }}
+                                                <a href="#login-wrapper" class="button">Inscrever-se</a>
+                                            </section>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <strong>Não EXISTEM EVENTOS DÍSPONIVELS PARA INSCRIÇÃO.</strong>
+                                @endif
+                           </div>
+                        </div>
+                    </section>
+                </div>
             </div>
 
             <div id="footer-wrapper" class="wrapper">
